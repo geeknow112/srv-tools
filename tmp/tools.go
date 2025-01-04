@@ -92,5 +92,13 @@ func (sc *SalesController) RegistOrderProcessForRepeat(get *GetData, post *PostD
 func main() {
 	// Example usage
 	fmt.Println("SalesController example")
+	fmt.Println("SalesController example")
+	fmt.Println("SalesController example")
+	fmt.Println("SalesController example")
+	fmt.Println("SalesController example")
+	fmt.Println("SalesController example")
+	fmt.Println("SalesController example")
+	fmt.Println("SalesController example")
+	fmt.Println("SalesController example")
 }
 
