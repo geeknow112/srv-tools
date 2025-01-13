@@ -12,16 +12,16 @@ type Sales struct {
 
 func (s *Sales) GetValidElement(stepNum int) map[string]interface{} {
 	messages := map[string]string{
-		"name.required":    "ƒ†[ƒU[–¼‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢",
-		"name.string":      "³‚µ‚¢Œ`®‚Å“ü—Í‚µ‚Ä‚­‚¾‚³‚¢",
-		"name.max":         "•¶š”‚ğƒI[ƒo[‚µ‚Ä‚¢‚Ü‚·B",
-		"email.required":   "ƒ[ƒ‹ƒAƒhƒŒƒX‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B",
-		"email.email":      "³‚µ‚¢Œ`®‚Åƒ[ƒ‹ƒAƒhƒŒƒX‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢",
-		"email.max":        "•¶š”‚ğƒI[ƒo[‚µ‚Ä‚¢‚Ü‚·B",
-		"email.unique":     "“o˜^Ï‚İ‚Ìƒ†[ƒU[‚Å‚·",
-		"password.required": "ƒpƒXƒ[ƒh‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢",
-		"password.min":     "ƒpƒXƒ[ƒh‚Í8•¶šˆÈã‚Å“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B",
-		"password.confirmed": "ƒpƒXƒ[ƒh‚ªˆê’v‚µ‚Ü‚¹‚ñB",
+		"name.required":    "ãƒ¦ãƒ¼ã‚¶ãƒ¼åã‚’å…¥åŠ›ã—ã¦ãã ã•ã„",
+		"name.string":      "æ­£ã—ã„å½¢å¼ã§å…¥åŠ›ã—ã¦ãã ã•ã„",
+		"name.max":         "æ–‡å­—æ•°ã‚’ã‚ªãƒ¼ãƒãƒ¼ã—ã¦ã„ã¾ã™ã€‚",
+		"email.required":   "ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚",
+		"email.email":      "æ­£ã—ã„å½¢å¼ã§ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„",
+		"email.max":        "æ–‡å­—æ•°ã‚’ã‚ªãƒ¼ãƒãƒ¼ã—ã¦ã„ã¾ã™ã€‚",
+		"email.unique":     "ç™»éŒ²æ¸ˆã¿ã®ãƒ¦ãƒ¼ã‚¶ãƒ¼ã§ã™",
+		"password.required": "ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„",
+		"password.min":     "ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã¯8æ–‡å­—ä»¥ä¸Šã§å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚",
+		"password.confirmed": "ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãŒä¸€è‡´ã—ã¾ã›ã‚“ã€‚",
 	}
 
 	step1 := map[string]interface{}{
