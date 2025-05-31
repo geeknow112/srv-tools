@@ -1,3 +1,3 @@
 # srv-tools
 
-check9
+check test yo-ext 1
