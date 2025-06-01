@@ -1,3 +1,3 @@
 # srv-tools
 
-check test dev-test2
+check test yo-ext 10
