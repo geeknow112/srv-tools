@@ -1,3 +1,3 @@
 # srv-tools
 
-check test dev-test1
+check test dev-test2
