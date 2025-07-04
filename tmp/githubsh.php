@@ -1,12 +1,24 @@
 <?php
-$gdata = __DIR__. '/gdata.php';
+$gdata = __DIR__. '/../../gdata.php';
 //echo $gdata. PHP_EOL;exit;
 require($gdata);
 
 //echo 'test';exit;
-$todo_no = "srv-tools#86";
-$migrate = "migration20250705008";
+$todo_no = "srv-tools#92";
+$migrate = "migration20250705009";
 $mfile = $migrate. ".go";
+
+$cmd_1 = get_cmd_1 ($migrate, $mfile, $todo_no);
+$cmd_2 = get_cmd_2 ($migrate, $mfile, $todo_no);
+$cmd_3 = get_cmd_3 ($migrate, $mfile, $todo_no);
+$cmd_4 = get_cmd_4 ($migrate, $mfile, $todo_no);
+/*
+var_dump($cmd_1);
+var_dump($cmd_2);
+var_dump($cmd_3);
+var_dump($cmd_4);
+exit;
+*/
 
 /**
  * cmd_exec
