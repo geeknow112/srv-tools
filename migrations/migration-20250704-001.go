@@ -3,31 +3,32 @@ package main
 import (
     "database/sql"
     "fmt"
+    
     _ "github.com/go-sql-driver/mysql"
 )
 
 func main() {
-    // MySQLƒf[ƒ^ƒx[ƒX‚Ö‚ÌÚ‘±î•ñ
+    // MySQLãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã¸ã®æ¥ç¶šæƒ…å ±
     db, err := sql.Open("mysql", "user:password@tcp(localhost:3306)/dbname")
     if err != nil {
         panic(err.Error())
     }
     defer db.Close()
 
-    // ƒf[ƒ^ƒx[ƒX‚Ö‚ÌÚ‘±‚ğŠm”F
+    // ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã¸ã®æ¥ç¶šã‚’ç¢ºèª
     err = db.Ping()
     if err != nil {
         panic(err.Error())
     }
 
-    // ƒf[ƒ^‚ÌXVƒNƒGƒŠ
+    // ãƒ‡ãƒ¼ã‚¿ã®æ›´æ–°ã‚¯ã‚¨ãƒª
     updateQuery := "UPDATE your_table SET column1 = ?, column2 = ? WHERE condition_column = ?"
 
-    // ƒNƒGƒŠ‚ğÀs
-    _, err = db.Exec(updateQuery, "todo#1989", "new_value2", "condition_value")
+    // ã‚¯ã‚¨ãƒªã‚’å®Ÿè¡Œ
+    _, err = db.Exec(updateQuery, "test_value1", "test_value2", "condition_value")
     if err != nil {
         panic(err.Error())
     }
 
-    fmt.Println("ƒf[ƒ^‚ÌXV‚ªŠ®—¹‚µ‚Ü‚µ‚½")
+    fmt.Println("ãƒ‡ãƒ¼ã‚¿ã®æ›´æ–°ãŒå®Œäº†ã—ã¾ã—ãŸ")
 }
