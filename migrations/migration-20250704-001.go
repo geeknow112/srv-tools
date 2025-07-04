@@ -3,7 +3,6 @@ package main
 import (
     "database/sql"
     "fmt"
-    
     _ "github.com/go-sql-driver/mysql"
 )
 
@@ -25,7 +24,7 @@ func main() {
     updateQuery := "UPDATE your_table SET column1 = ?, column2 = ? WHERE condition_column = ?"
 
     // ÉNÉGÉäÇé¿çs
-    _, err = db.Exec(updateQuery, "new_value1", "new_value2", "condition_value")
+    _, err = db.Exec(updateQuery, "todo#1989", "new_value2", "condition_value")
     if err != nil {
         panic(err.Error())
     }
