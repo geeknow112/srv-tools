@@ -4,9 +4,8 @@ $gdata = __DIR__. '/../../gdata.php';
 require($gdata);
 
 //echo 'test';exit;
-$todo_no = "srv-tools#97";
-//$todo_no = "todo#2009";
-$migrate = "migration20250705011";
+$todo_no = "srv-tools#92";
+$migrate = "migration20250705009";
 $mfile = $migrate. ".go";
 
 $cmd_1 = get_cmd_1 ($migrate, $mfile, $todo_no);
