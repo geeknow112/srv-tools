@@ -4,10 +4,18 @@ $gdata = __DIR__. '/../../gdata.php';
 require($gdata);
 
 //echo 'test';exit;
+if (!$argv[1] || !$argv[2] || !$argv[3]) { echo 'arg error.'. PHP_EOL;exit; }
+
 //$todo_no = "srv-tools#101";
-$todo_no = "todo#1963";
-$migrate = "migration20250706003";
+//$todo_no = "todo#1963";
+$todo_no = $argv[1];
+$dt = date('Ymd');
+
+//$migrate = "migration20250706003";
+$migrate = sprintf("migration%s%s", $dt, $argv[2]);
+
 $mfile = $migrate. ".go";
+//var_dump($migrate);exit;
 
 $cmd_1 = get_cmd_1 ($migrate, $mfile, $todo_no);
 $cmd_2 = get_cmd_2 ($migrate, $mfile, $todo_no);
@@ -33,8 +41,8 @@ function cmd_exec($cmds = null) {
 }
 
 var_dump($argv);
-if (!empty($argv[1])) {
-	switch ($argv[1]) {
+if (!empty($argv[3])) {
+	switch ($argv[3]) {
 		case 1:
 			cmd_exec($cmd_1);
 			break;
