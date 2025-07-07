@@ -9,6 +9,7 @@ if (!$argv[1] || !$argv[2] || !$argv[3]) { echo 'arg error.'. PHP_EOL;exit; }
 //$todo_no = "srv-tools#101";
 //$todo_no = "todo#1963";
 $todo_no = $argv[1];
+date_default_timezone_set('Asia/Tokyo');
 $dt = date('Ymd');
 
 //$migrate = "migration20250706003";
