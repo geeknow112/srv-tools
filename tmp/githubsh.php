@@ -1,5 +1,8 @@
 <?php
 $gdata = __DIR__. '/../../gdata.php';
+$count_file = __DIR__. '/../migrations/count.txt';
+$count = file_get_contents($count_file);
+
 //echo $gdata. PHP_EOL;exit;
 require($gdata);
 
@@ -13,7 +16,7 @@ date_default_timezone_set('Asia/Tokyo');
 $dt = date('Ymd');
 
 //$migrate = "migration20250706003";
-$next_no = get_next_no($dt);
+$next_no = get_next_no($count);
 $migrate = sprintf("migration%s%03d", $dt, $next_no);
 //var_dump($migrate);exit;
 $mfile = $migrate. ".go";
@@ -50,9 +53,7 @@ function set_next_no($no = null) {
 /**
  * get_next_no
  **/
-function get_next_no() {
-	$count_file = __DIR__. '/../migrations/count.txt';
-	$count = file_get_contents($count_file);
+function get_next_no($count = null) {
 	$no = intval(trim($count));
 	return $no;
 }
