@@ -12,7 +12,7 @@ if ($VerboseOutput) {
 $hidemaru = 'C:\Program Files (x86)\Hidemaru\Hidemaru.exe'
 
 # include config
-. ".\urls.ps1"
+. "..\urls.ps1"
 
 #Start-Process -FilePath chrome -ArgumentList '--incognito', '--new-window'
 #Start-Process -FilePath chrome -ArgumentList '--new-window'
@@ -24,26 +24,31 @@ $chromeArguments = @("--incognito", "--new-window") + $urls
 # 構築した引数リストを一度に渡してChromeを起動
 #Start-Process -FilePath chrome -ArgumentList $chromeArguments
 
-# 
-#$arg_att = @(""--new-window"") + $urls_att
-#Start-Process -FilePath chrome -ArgumentList $arg_att
-
-# 
-#$arg_att2 = @(""--new-window"") + $urls_att2
-#Start-Process -FilePath chrome -ArgumentList $arg_att2
-
-# 
-#$arg_work = @(""--new-window"") + $urls_work
-#Start-Process -FilePath chrome -ArgumentList $arg_work
-
-# 
-$arg_work2 = @("--incognito", "--new-window") + $urls_work2
-Start-Process -FilePath chrome -ArgumentList $arg_work2
-
-if ($Group -eq 'work2') {
-    Write-Host $Group 
-    foreach ($url in $arg_work2) {
-        Write-Host ""# $url""
+switch ($Group) {
+    'url0' {
+        # 
     }
-    exit
+    'url1' {
+        # 
+        $arg_att = @("--incognito", "--new-window") + $urls_att
+        Start-Process -FilePath chrome -ArgumentList $arg_att
+    }
+    'url2' {
+        # 
+        $arg_att2 = @("--incognito", "--new-window") + $urls_att2
+        Start-Process -FilePath chrome -ArgumentList $arg_att2
+    }
+    'work1' {
+        # 
+        $arg_work = @("--incognito", "--new-window") + $urls_work
+        Start-Process -FilePath chrome -ArgumentList $arg_work
+    }
+    'work2' {
+        # 
+        $arg_work2 = @("--incognito", "--new-window") + $urls_work2
+        Start-Process -FilePath chrome -ArgumentList $arg_work2
+    }
+    Default {
+        Write-host "Non Group.."
+    }
 }
