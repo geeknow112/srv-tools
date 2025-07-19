@@ -1,0 +1,125 @@
+{
+  "test_execution": {
+    "date": "2025-07-19",
+    "start_time": "16:00:00",
+    "end_time": "16:20:00",
+    "timezone": "JST",
+    "environment": {
+      "os": "Linux (WSL)",
+      "php_version": "8.3.6",
+      "git_version": "2.x",
+      "gh_cli": "available"
+    }
+  },
+  "test_summary": {
+    "total_stages": 5,
+    "passed": 5,
+    "failed": 0,
+    "success_rate": "100%",
+    "overall_status": "PASSED"
+  },
+  "stage_results": [
+    {
+      "stage": 0,
+      "name": "GitHub Issue Creation",
+      "command": "php githubsh.php \"Test migration workflow automation\" 0",
+      "status": "PASSED",
+      "execution_time_seconds": 1,
+      "output": {
+        "issue_number": 246,
+        "issue_url": "https://github.com/geeknow112/srv-tools/issues/246",
+        "issue_title": "Test migration workflow automation"
+      }
+    },
+    {
+      "stage": 1,
+      "name": "Branch Creation & File Copy",
+      "command": "php githubsh.php srv-tools#246 1",
+      "status": "PASSED",
+      "execution_time_seconds": 3,
+      "output": {
+        "branch_name": "migration20250720004",
+        "base_file": "migration-20250703-001.go",
+        "target_file": "migration20250720004.go"
+      }
+    },
+    {
+      "stage": 2,
+      "name": "File Modification",
+      "command": "php githubsh.php srv-tools#246 2",
+      "status": "PASSED",
+      "execution_time_seconds": 2,
+      "output": {
+        "placeholder_replaced": {
+          "from": "test_value1",
+          "to": "srv-tools#246"
+        },
+        "file_ownership_updated": true
+      }
+    },
+    {
+      "stage": 3,
+      "name": "Git Commit & Push",
+      "command": "php githubsh.php srv-tools#246 3",
+      "status": "PASSED",
+      "execution_time_seconds": 5,
+      "output": {
+        "commit_message": "Fixes geeknow112/srv-tools#246",
+        "remote_branch_pushed": "migration20250720004"
+      }
+    },
+    {
+      "stage": "PR",
+      "name": "Pull Request Creation",
+      "command": "gh pr create --title \"Fixes geeknow112/srv-tools#246\" --body \"...\"",
+      "status": "PASSED",
+      "execution_time_seconds": 2,
+      "output": {
+        "pr_number": 247,
+        "pr_url": "https://github.com/geeknow112/srv-tools/pull/247"
+      }
+    },
+    {
+      "stage": 4,
+      "name": "Branch Cleanup",
+      "command": "php githubsh.php srv-tools#246 4",
+      "status": "PASSED_WITH_MANUAL_INTERVENTION",
+      "execution_time_seconds": 10,
+      "output": {
+        "local_branch_deleted": true,
+        "remote_branch_deleted": true,
+        "switched_to_main": true,
+        "notes": "Manual intervention required for log file conflicts"
+      }
+    }
+  ],
+  "created_resources": {
+    "github_issue": {
+      "number": 246,
+      "url": "https://github.com/geeknow112/srv-tools/issues/246"
+    },
+    "pull_request": {
+      "number": 247,
+      "url": "https://github.com/geeknow112/srv-tools/pull/247"
+    },
+    "migration_file": {
+      "name": "migration20250720004.go",
+      "content_verified": true,
+      "placeholder_replacement_successful": true
+    }
+  },
+  "issues_identified": [
+    {
+      "stage": 4,
+      "issue": "Log file conflicts during branch switching",
+      "impact": "Minor - requires manual intervention",
+      "suggested_fix": "Add githubsh.log to .gitignore or use temporary directory"
+    }
+  ],
+  "recommendations": [
+    "Add error handling for log file conflicts",
+    "Implement automatic stashing for uncommitted changes",
+    "Add validation for GitHub CLI authentication",
+    "Consider adding rollback functionality for failed stages"
+  ]
+}
