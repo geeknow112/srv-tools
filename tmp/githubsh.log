@@ -82,6 +82,52 @@
 [2025-07-19 16:18:20] [INFO] Starting GitHub Shell Manager
 [2025-07-19 16:18:20] [INFO] Todo No: srv-tools#246, Stage: 3
 [2025-07-20 01:18:20] [INFO] Executing: git add ./
+<<<<<<< HEAD
+[2025-07-19 17:36:54] [INFO] Starting GitHub Shell Manager
+[2025-07-19 17:36:54] [INFO] Todo No: Complete workflow test with merge waiting and proper file placement, Stage: 0
+[2025-07-19 17:36:54] [INFO] Creating GitHub issue: Complete workflow test with merge waiting and proper file placement
+[2025-07-19 17:36:55] [INFO] GitHub issue created: https://github.com/geeknow112/srv-tools/issues/269
+[2025-07-19 17:36:55] [INFO] Process completed successfully!
+[2025-07-19 17:37:15] [INFO] Starting GitHub Shell Manager
+[2025-07-19 17:37:15] [INFO] Todo No: srv-tools#269, Stage: 1
+[2025-07-20 02:37:15] [INFO] Executing: cd /mnt/c/Users/youre/Documents/git_repo/srv-tools/tmp/../migrations/
+[2025-07-20 02:37:15] [INFO] Command completed successfully
+[2025-07-20 02:37:16] [INFO] Executing: git checkout -b migration20250720004
+[2025-07-20 02:37:16] [ERROR] Error: Command failed: git checkout -b migration20250720004
+Output: fatal: a branch named 'migration20250720004' already exists
+[2025-07-20 02:37:16] [ERROR] Fatal Error: Command failed: git checkout -b migration20250720004
+Output: fatal: a branch named 'migration20250720004' already exists
+[2025-07-19 17:37:37] [INFO] Starting GitHub Shell Manager
+[2025-07-19 17:37:37] [INFO] Todo No: srv-tools#269, Stage: 1
+[2025-07-20 02:37:37] [INFO] Executing: cd /mnt/c/Users/youre/Documents/git_repo/srv-tools/tmp/../migrations/
+[2025-07-20 02:37:37] [INFO] Command completed successfully
+[2025-07-20 02:37:38] [INFO] Executing: git checkout -b migration20250720006
+[2025-07-20 02:37:39] [INFO] Command completed successfully
+[2025-07-20 02:37:40] [INFO] Executing: cp -p /mnt/c/Users/youre/Documents/git_repo/srv-tools/tmp/../migrations/migration-20250703-001.go /mnt/c/Users/youre/Documents/git_repo/srv-tools/tmp/../migrations/migration20250720006.go
+[2025-07-20 02:37:40] [INFO] Command completed successfully
+[2025-07-20 02:37:41] [INFO] Successfully executed stage 1 for srv-tools#269
+[2025-07-20 02:37:41] [INFO] Process completed successfully!
+[2025-07-19 17:38:02] [INFO] Starting GitHub Shell Manager
+[2025-07-19 17:38:02] [INFO] Todo No: srv-tools#269, Stage: 2
+[2025-07-20 02:38:02] [INFO] Executing: chown $(whoami):$(whoami) /mnt/c/Users/youre/Documents/git_repo/srv-tools/tmp/../migrations/migration20250720006.go
+[2025-07-20 02:38:02] [INFO] Command completed successfully
+[2025-07-20 02:38:03] [INFO] Executing: sed -i 's/test_value1/srv-tools#269/g' /mnt/c/Users/youre/Documents/git_repo/srv-tools/tmp/../migrations/migration20250720006.go
+[2025-07-20 02:38:03] [INFO] Command completed successfully
+[2025-07-20 02:38:04] [INFO] Executing: echo '2025-07-20 02:38:02: Applied modifications for srv-tools#269' >> ../logs/modification_log.txt
+[2025-07-20 02:38:04] [INFO] Command completed successfully
+[2025-07-20 02:38:05] [INFO] Successfully executed stage 2 for srv-tools#269
+[2025-07-20 02:38:05] [INFO] Process completed successfully!
+[2025-07-19 17:38:16] [INFO] Starting GitHub Shell Manager
+[2025-07-19 17:38:16] [INFO] Todo No: srv-tools#269, Stage: 3
+[2025-07-20 02:38:16] [INFO] Executing: git add .
+[2025-07-20 02:38:16] [INFO] Command completed successfully
+[2025-07-20 02:38:17] [INFO] Executing: git commit -m 'Fixes geeknow112/srv-tools#269'
+[2025-07-20 02:38:18] [INFO] Command completed successfully
+[2025-07-20 02:38:19] [INFO] Executing: git push origin migration20250720006
+[2025-07-20 02:38:21] [INFO] Command completed successfully
+[2025-07-20 02:38:22] [INFO] Successfully executed stage 3 for srv-tools#269
+[2025-07-20 02:38:22] [INFO] Process completed successfully!
+=======
 [2025-07-19 16:56:36] [INFO] Starting GitHub Shell Manager
 [2025-07-19 16:56:36] [INFO] Todo No: srv-tools#255, Stage: 1
 [2025-07-20 01:56:36] [INFO] Executing: cd /mnt/c/Users/youre/Documents/git_repo/srv-tools/migrations
@@ -121,3 +167,4 @@ Output:
 [2025-07-19 16:58:28] [INFO] Starting GitHub Shell Manager
 [2025-07-19 16:58:28] [INFO] Todo No: srv-tools#255, Stage: 3
 [2025-07-20 01:58:28] [INFO] Executing: git add ./
+>>>>>>> origin/main
