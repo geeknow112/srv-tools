@@ -321,3 +321,23 @@ Output:
 [2025-07-19 18:20:08] [INFO] Starting GitHub Shell Manager
 [2025-07-19 18:20:08] [INFO] Todo No: srv-tools#287, Stage: 3
 [2025-07-20 03:20:08] [INFO] 実行中: git add .
+[2025-07-20 03:21:21] [INFO] GitHubレポートを作成しました: https://github.com/geeknow112/srv-tools/issues/290
+[2025-07-20 03:21:22] [INFO] 元のIssue #282 をクローズしました
+[2025-07-20 03:21:22] [INFO] 実行レポートを生成しました: /mnt/c/Users/youre/Documents/git_repo/srv-tools/tmp/execution_report_20250720_032120.json
+[2025-07-19 18:28:24] [INFO] Starting GitHub Shell Manager
+[2025-07-19 18:28:24] [INFO] Todo No: 月次カウンターリセット機能テスト, Stage: 0
+[2025-07-19 18:28:24] [INFO] Creating GitHub issue: 月次カウンターリセット機能テスト
+[2025-07-19 18:28:25] [INFO] GitHub issue created: https://github.com/geeknow112/srv-tools/issues/291
+[2025-07-19 18:28:25] [INFO] Process completed successfully!
+[2025-07-19 18:28:36] [INFO] Starting GitHub Shell Manager
+[2025-07-19 18:28:36] [INFO] Todo No: srv-tools#291, Stage: 1
+[2025-07-20 03:28:36] [INFO] 月が変わりました (202506 → 202507)。カウンターを001にリセットします。
+[2025-07-20 03:28:36] [INFO] 実行中: cd /mnt/c/Users/youre/Documents/git_repo/srv-tools/tmp/../migrations/
+[2025-07-20 03:28:36] [INFO] コマンドが正常に完了しました
+[2025-07-20 03:28:37] [INFO] 実行中: git checkout -b migration20250720001
+[2025-07-20 03:28:37] [INFO] コマンドが正常に完了しました
+[2025-07-20 03:28:38] [INFO] 実行中: cp -p /mnt/c/Users/youre/Documents/git_repo/srv-tools/tmp/../migrations/migration-20250703-001.go /mnt/c/Users/youre/Documents/git_repo/srv-tools/tmp/../migrations/migration20250720001.go
+[2025-07-20 03:28:38] [INFO] コマンドが正常に完了しました
+[2025-07-20 03:28:39] [INFO] ステージ 1 for srv-tools#291 が正常に完了しました
+[2025-07-20 03:28:39] [INFO] 実行レポートを生成しました: /mnt/c/Users/youre/Documents/git_repo/srv-tools/tmp/execution_report_20250720_032839.json
+[2025-07-20 03:28:39] [INFO] Process completed successfully!
