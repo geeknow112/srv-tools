@@ -25,7 +25,8 @@ func main() {
     updateQuery := "UPDATE your_table SET column1 = ?, column2 = ? WHERE condition_column = ?"
 
     // クエリを実行
-    _, err = db.Exec(updateQuery, "srv-tools#251", "test_value2", "condition_value")
+    _, err = db.Exec(updateQuery, "srv-tools#255", "test_value2", "condition_value")
+
     if err != nil {
         panic(err.Error())
     }
