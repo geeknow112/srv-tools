@@ -6,6 +6,7 @@ class GitHubShellManager {
     private $stage;
     private $execution_log = [];
     private $start_time;
+    private $original_issue_number = null;
     
     public function __construct($config, $todo_no, $stage) {
         $this->config = $config;
@@ -13,6 +14,11 @@ class GitHubShellManager {
         $this->stage = $stage;
         $this->start_time = microtime(true);
         date_default_timezone_set($this->config['timezone']);
+        
+        // 元のIssue番号を抽出
+        if (preg_match('/srv-tools#(\d+)/', $todo_no, $matches)) {
+            $this->original_issue_number = $matches[1];
+        }
     }
     
     public function generateMigrationFile() {
@@ -26,7 +32,7 @@ class GitHubShellManager {
     
     public function execute() {
         try {
-            $this->logExecution("Starting execution", "Stage {$this->stage} for {$this->todo_no}");
+            $this->logExecution("実行開始", "ステージ {$this->stage} for {$this->todo_no}");
             
             [$migrate, $mfile, $next_no] = $this->generateMigrationFile();
             
@@ -37,15 +43,15 @@ class GitHubShellManager {
                 $this->setNextNo($next_no);
             }
             
-            $this->logExecution("Completed successfully", "Stage {$this->stage} execution completed");
-            $this->writeLog("Successfully executed stage {$this->stage} for {$this->todo_no}");
+            $this->logExecution("正常完了", "ステージ {$this->stage} の実行が完了しました");
+            $this->writeLog("ステージ {$this->stage} for {$this->todo_no} が正常に完了しました");
             
-            // 実行完了後にレポートを生成
+            // 実行完了後にレポートを生成（成功時も含む）
             $this->generateExecutionReport($migrate, $mfile, $next_no);
             
         } catch (Exception $e) {
-            $this->logExecution("Error occurred", $e->getMessage());
-            $this->writeLog("Error: " . $e->getMessage(), 'ERROR');
+            $this->logExecution("エラー発生", $e->getMessage());
+            $this->writeLog("エラー: " . $e->getMessage(), 'ERROR');
             
             // エラー時もレポートを生成
             $this->generateExecutionReport(null, null, null, $e);
@@ -72,7 +78,8 @@ class GitHubShellManager {
                 'start_time' => date('Y-m-d H:i:s', $this->start_time),
                 'end_time' => date('Y-m-d H:i:s', $end_time),
                 'execution_time_seconds' => $execution_time,
-                'status' => $error ? 'FAILED' : 'SUCCESS'
+                'status' => $error ? 'FAILED' : 'SUCCESS',
+                'original_issue' => $this->original_issue_number
             ],
             'generated_files' => [
                 'migration_name' => $migrate,
@@ -90,32 +97,37 @@ class GitHubShellManager {
         // コンソール出力
         $this->outputReportSummary($report);
         
-        // GitHub Issue作成（Stage 4完了時またはエラー時）
+        // GitHub Issue作成（Stage 4完了時は必ず、その他はエラー時のみ）
         if ($this->stage == 4 || $error) {
             $this->createGitHubReport($report, $report_file);
+            
+            // Stage 4成功時は元のIssueをClose
+            if ($this->stage == 4 && !$error && $this->original_issue_number) {
+                $this->closeOriginalIssue();
+            }
         }
         
-        $this->writeLog("Execution report generated: $report_file");
+        $this->writeLog("実行レポートを生成しました: $report_file");
     }
     
     private function outputReportSummary($report) {
         $status_icon = $report['execution_info']['status'] === 'SUCCESS' ? '✅' : '❌';
         
         echo "\n" . str_repeat('=', 60) . "\n";
-        echo "📊 EXECUTION REPORT {$status_icon}\n";
+        echo "📊 実行レポート {$status_icon}\n";
         echo str_repeat('=', 60) . "\n";
-        echo "Todo: {$report['execution_info']['todo_no']}\n";
-        echo "Stage: {$report['execution_info']['stage']} ({$this->getStageName($report['execution_info']['stage'])})\n";
-        echo "Status: {$report['execution_info']['status']}\n";
-        echo "Execution Time: {$report['execution_info']['execution_time_seconds']}s\n";
+        echo "タスク: {$report['execution_info']['todo_no']}\n";
+        echo "ステージ: {$report['execution_info']['stage']} ({$this->getStageName($report['execution_info']['stage'])})\n";
+        echo "ステータス: {$report['execution_info']['status']}\n";
+        echo "実行時間: {$report['execution_info']['execution_time_seconds']}秒\n";
         
         if ($report['generated_files']['migration_name']) {
-            echo "Migration: {$report['generated_files']['migration_name']}\n";
-            echo "Counter: {$report['generated_files']['counter_value']}\n";
+            echo "マイグレーション: {$report['generated_files']['migration_name']}\n";
+            echo "カウンター: {$report['generated_files']['counter_value']}\n";
         }
         
         if ($report['error']) {
-            echo "Error: {$report['error']}\n";
+            echo "エラー: {$report['error']}\n";
         }
         
         echo str_repeat('=', 60) . "\n\n";
@@ -124,9 +136,12 @@ class GitHubShellManager {
     private function createGitHubReport($report, $report_file) {
         try {
             $status_icon = $report['execution_info']['status'] === 'SUCCESS' ? '✅' : '❌';
-            $title = sprintf("Execution Report: %s Stage %d %s", 
+            $status_text = $report['execution_info']['status'] === 'SUCCESS' ? '完了' : 'エラー';
+            
+            $title = sprintf("実行レポート: %s ステージ%d %s %s", 
                            $report['execution_info']['todo_no'], 
                            $report['execution_info']['stage'],
+                           $status_text,
                            $status_icon);
             
             $body = $this->generateGitHubReportBody($report);
@@ -141,45 +156,90 @@ class GitHubShellManager {
             
             if ($return_code === 0) {
                 $issue_url = trim(implode("\n", $output));
-                $this->writeLog("GitHub report created: $issue_url");
-                echo "📋 GitHub Report: $issue_url" . PHP_EOL;
+                $this->writeLog("GitHubレポートを作成しました: $issue_url");
+                echo "📋 GitHubレポート: $issue_url" . PHP_EOL;
             } else {
-                $this->writeLog("Failed to create GitHub report: " . implode("\n", $output), 'WARNING');
+                $this->writeLog("GitHubレポートの作成に失敗しました: " . implode("\n", $output), 'WARNING');
             }
         } catch (Exception $e) {
-            $this->writeLog("Failed to create GitHub report: " . $e->getMessage(), 'WARNING');
+            $this->writeLog("GitHubレポートの作成に失敗しました: " . $e->getMessage(), 'WARNING');
+        }
+    }
+    
+    private function closeOriginalIssue() {
+        if (!$this->original_issue_number) {
+            return;
+        }
+        
+        try {
+            $close_comment = sprintf("🎉 **ステージ4完了 - タスク完了**\n\n" .
+                                   "タスク `%s` のすべてのステージが正常に完了しました。\n\n" .
+                                   "## ✅ 完了した作業\n" .
+                                   "- ステージ1: ブランチ作成とファイル配置\n" .
+                                   "- ステージ2: ファイル修正\n" .
+                                   "- ステージ3: Git操作とPR作成\n" .
+                                   "- ステージ4: マージ確認、ブランチクリーンアップ、カウンター更新\n\n" .
+                                   "このIssueを自動的にクローズします。", 
+                                   $this->todo_no);
+            
+            // コメント追加
+            $comment_cmd = sprintf('gh issue comment %d --body "%s"', 
+                                 $this->original_issue_number, 
+                                 addslashes($close_comment));
+            exec($comment_cmd . ' 2>&1');
+            
+            // Issue クローズ
+            $close_cmd = sprintf('gh issue close %d', $this->original_issue_number);
+            $output = [];
+            $return_code = 0;
+            exec($close_cmd . ' 2>&1', $output, $return_code);
+            
+            if ($return_code === 0) {
+                $this->writeLog("元のIssue #{$this->original_issue_number} をクローズしました");
+                echo "🔒 元のIssue #{$this->original_issue_number} をクローズしました" . PHP_EOL;
+            } else {
+                $this->writeLog("元のIssueのクローズに失敗しました: " . implode("\n", $output), 'WARNING');
+            }
+        } catch (Exception $e) {
+            $this->writeLog("元のIssueのクローズに失敗しました: " . $e->getMessage(), 'WARNING');
         }
     }
     
     private function generateGitHubReportBody($report) {
         $status_icon = $report['execution_info']['status'] === 'SUCCESS' ? '✅' : '❌';
+        $status_text = $report['execution_info']['status'] === 'SUCCESS' ? '正常完了' : 'エラー';
         $stage_name = $this->getStageName($report['execution_info']['stage']);
         
-        $body = "## {$status_icon} Execution Report\n\n";
-        $body .= "### 📊 Execution Summary\n";
-        $body .= "- **Todo**: {$report['execution_info']['todo_no']}\n";
-        $body .= "- **Stage**: {$report['execution_info']['stage']} ({$stage_name})\n";
-        $body .= "- **Status**: {$report['execution_info']['status']}\n";
-        $body .= "- **Execution Time**: {$report['execution_info']['execution_time_seconds']}s\n";
-        $body .= "- **Start Time**: {$report['execution_info']['start_time']}\n";
-        $body .= "- **End Time**: {$report['execution_info']['end_time']}\n\n";
+        $body = "## {$status_icon} 実行レポート - {$status_text}\n\n";
+        $body .= "### 📊 実行サマリー\n";
+        $body .= "- **タスク**: {$report['execution_info']['todo_no']}\n";
+        $body .= "- **ステージ**: {$report['execution_info']['stage']} ({$stage_name})\n";
+        $body .= "- **ステータス**: {$report['execution_info']['status']}\n";
+        $body .= "- **実行時間**: {$report['execution_info']['execution_time_seconds']}秒\n";
+        $body .= "- **開始時刻**: {$report['execution_info']['start_time']}\n";
+        $body .= "- **終了時刻**: {$report['execution_info']['end_time']}\n";
+        
+        if ($report['execution_info']['original_issue']) {
+            $body .= "- **元のIssue**: #{$report['execution_info']['original_issue']}\n";
+        }
+        $body .= "\n";
         
         if ($report['generated_files']['migration_name']) {
-            $body .= "### 📁 Generated Files\n";
-            $body .= "- **Migration**: {$report['generated_files']['migration_name']}\n";
-            $body .= "- **File**: {$report['generated_files']['migration_file']}\n";
-            $body .= "- **Counter**: {$report['generated_files']['counter_value']}\n\n";
+            $body .= "### 📁 生成されたファイル\n";
+            $body .= "- **マイグレーション**: {$report['generated_files']['migration_name']}\n";
+            $body .= "- **ファイル**: {$report['generated_files']['migration_file']}\n";
+            $body .= "- **カウンター**: {$report['generated_files']['counter_value']}\n\n";
         }
         
         if ($report['error']) {
-            $body .= "### ❌ Error Details\n";
+            $body .= "### ❌ エラー詳細\n";
             $body .= "```\n{$report['error']}\n```\n\n";
         }
         
-        $body .= "### 📝 Execution Log\n";
+        $body .= "### 📝 実行ログ\n";
         foreach ($report['execution_log'] as $log) {
             if (is_array($log['details'])) {
-                $details = json_encode($log['details'], JSON_PRETTY_PRINT);
+                $details = json_encode($log['details'], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
             } else {
                 $details = $log['details'];
             }
@@ -191,13 +251,13 @@ class GitHubShellManager {
     
     private function getStageName($stage) {
         $stage_names = [
-            0 => 'Issue Creation',
-            1 => 'Branch Creation & File Copy',
-            2 => 'File Modification',
-            3 => 'Git Commit & Push',
-            4 => 'Branch Cleanup & Counter Update'
+            0 => 'Issue作成',
+            1 => 'ブランチ作成・ファイル配置',
+            2 => 'ファイル修正',
+            3 => 'Git操作・プッシュ',
+            4 => 'ブランチクリーンアップ・カウンター更新'
         ];
-        return $stage_names[$stage] ?? 'Unknown Stage';
+        return $stage_names[$stage] ?? '不明なステージ';
     }
     
     private function getNextNo() {
@@ -215,12 +275,12 @@ class GitHubShellManager {
         $count_file = $this->config['count_file'];
         $next_no = $no + 1;
         file_put_contents($count_file, $next_no);
-        $this->writeLog("Updated counter to: $next_no");
+        $this->writeLog("カウンターを更新しました: $next_no");
     }
     
     private function getCommands($migrate, $mfile) {
         // migrationsディレクトリ内でのファイル名を使用
-        $migration_file = $mfile; // migration20250720007.go
+        $migration_file = $mfile; // migration20250720010.go
         
         return [
             1 => get_cmd_1($migrate, $migration_file, $this->todo_no),
@@ -232,11 +292,11 @@ class GitHubShellManager {
     
     private function executeCommands($commands) {
         if (!is_array($commands)) {
-            throw new Exception("Commands must be an array");
+            throw new Exception("コマンドは配列である必要があります");
         }
         
         foreach ($commands as $cmd) {
-            $this->writeLog("Executing: $cmd");
+            $this->writeLog("実行中: $cmd");
             
             $output = [];
             $return_code = 0;
@@ -244,7 +304,7 @@ class GitHubShellManager {
             exec($cmd . ' 2>&1', $output, $return_code);
             $execution_time = microtime(true) - $start_time;
             
-            $this->logExecution("Command executed", [
+            $this->logExecution("コマンド実行", [
                 'command' => $cmd,
                 'return_code' => $return_code,
                 'execution_time' => round($execution_time, 3),
@@ -252,11 +312,11 @@ class GitHubShellManager {
             ]);
             
             if ($return_code !== 0) {
-                $error_msg = "Command failed: $cmd\nOutput: " . implode("\n", $output);
+                $error_msg = "コマンドが失敗しました: $cmd\n出力: " . implode("\n", $output);
                 throw new Exception($error_msg);
             }
             
-            $this->writeLog("Command completed successfully");
+            $this->writeLog("コマンドが正常に完了しました");
             sleep(1);
         }
     }
