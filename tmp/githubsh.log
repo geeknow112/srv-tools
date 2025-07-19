@@ -288,3 +288,6 @@ Output:
 [2025-07-19 18:13:00] [INFO] Starting GitHub Shell Manager
 [2025-07-19 18:13:00] [INFO] Todo No: srv-tools#282, Stage: 3
 [2025-07-20 03:13:00] [INFO] 実行中: git add .
+[2025-07-20 03:14:30] [INFO] GitHubレポートを作成しました: https://github.com/geeknow112/srv-tools/issues/285
+[2025-07-20 03:14:32] [INFO] 元のIssue #282 をクローズしました
+[2025-07-20 03:14:32] [INFO] 実行レポートを生成しました: /mnt/c/Users/youre/Documents/git_repo/srv-tools/tmp/execution_report_20250720_031429.json
