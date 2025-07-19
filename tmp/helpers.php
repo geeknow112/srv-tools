@@ -5,19 +5,42 @@
  */
 function validateArguments($argv) {
     if (count($argv) < 3) {
-        echo "Usage: php githubsh.php <todo_no> <stage_number>" . PHP_EOL;
-        echo "  todo_no: Issue number (e.g., srv-tools#101)" . PHP_EOL;
-        echo "  stage_number: 1-4 (execution stage)" . PHP_EOL;
+        echo "Usage:" . PHP_EOL;
+        echo "  php githubsh.php <issue_title> 0          # Create GitHub issue" . PHP_EOL;
+        echo "  php githubsh.php <todo_no> <stage_number> # Execute workflow stages" . PHP_EOL;
+        echo "" . PHP_EOL;
+        echo "Examples:" . PHP_EOL;
+        echo "  php githubsh.php \"Fix database migration bug\" 0" . PHP_EOL;
+        echo "  php githubsh.php srv-tools#101 1" . PHP_EOL;
+        echo "" . PHP_EOL;
+        echo "Stages:" . PHP_EOL;
+        echo "  0: Create GitHub issue" . PHP_EOL;
+        echo "  1: Create branch and migration file" . PHP_EOL;
+        echo "  2: Modify migration file" . PHP_EOL;
+        echo "  3: Commit and push changes" . PHP_EOL;
+        echo "  4: Cleanup branches" . PHP_EOL;
         exit(1);
     }
     
+    $stage = intval($argv[2]);
+    
+    // Stage 0の場合は、issue titleの検証
+    if ($stage === 0) {
+        if (empty(trim($argv[1]))) {
+            echo "Error: Issue title cannot be empty" . PHP_EOL;
+            exit(1);
+        }
+        return; // Stage 0は他の検証をスキップ
+    }
+    
+    // Stage 1-4の場合は、todo_no形式の検証
     if (!preg_match('/^[a-zA-Z0-9#-]+$/', $argv[1])) {
         echo "Error: Invalid todo_no format" . PHP_EOL;
         exit(1);
     }
     
-    if (!in_array($argv[2], ['1', '2', '3', '4'])) {
-        echo "Error: stage_number must be 1, 2, 3, or 4" . PHP_EOL;
+    if (!in_array($stage, [1, 2, 3, 4])) {
+        echo "Error: stage_number must be 0, 1, 2, 3, or 4" . PHP_EOL;
         exit(1);
     }
 }
