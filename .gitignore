@@ -1,0 +1,16 @@
+# Logs
+*.log
+tmp/*.log
+tmp/execution_report_*.json
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
