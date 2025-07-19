@@ -26,6 +26,7 @@ func main() {
 
     // クエリを実行
     _, err = db.Exec(updateQuery, "srv-tools#255", "test_value2", "condition_value")
+
     if err != nil {
         panic(err.Error())
     }
