@@ -262,20 +262,45 @@ class GitHubShellManager {
     
     private function getNextNo() {
         $count_file = $this->config['count_file'];
+        $current_month = date('Ym'); // 202507
+        
+        // カウンターファイルの形式: "カウンター値:月"
         if (!file_exists($count_file)) {
-            file_put_contents($count_file, "1");
+            file_put_contents($count_file, "1:$current_month");
             return 1;
         }
         
-        $count = file_get_contents($count_file);
-        return intval(trim($count));
+        $content = trim(file_get_contents($count_file));
+        $parts = explode(':', $content);
+        
+        if (count($parts) == 2) {
+            $count = intval($parts[0]);
+            $saved_month = $parts[1];
+            
+            // 月が変わった場合はカウンターをリセット
+            if ($saved_month !== $current_month) {
+                $this->writeLog("月が変わりました ($saved_month → $current_month)。カウンターを001にリセットします。");
+                file_put_contents($count_file, "1:$current_month");
+                return 1;
+            }
+            
+            return $count;
+        } else {
+            // 古い形式の場合は新形式に変換
+            $count = intval($content);
+            file_put_contents($count_file, "$count:$current_month");
+            return $count;
+        }
     }
     
     private function setNextNo($no) {
         $count_file = $this->config['count_file'];
+        $current_month = date('Ym'); // 202507
         $next_no = $no + 1;
-        file_put_contents($count_file, $next_no);
-        $this->writeLog("カウンターを更新しました: $next_no");
+        
+        // 新形式で保存: "カウンター値:月"
+        file_put_contents($count_file, "$next_no:$current_month");
+        $this->writeLog("カウンターを更新しました: $next_no (月: $current_month)");
     }
     
     private function getCommands($migrate, $mfile) {
