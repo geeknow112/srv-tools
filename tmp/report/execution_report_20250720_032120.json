@@ -1,0 +1,18 @@
+{
+    "execution_info": {
+        "todo_no": "srv-tools#282",
+        "stage": 4,
+        "start_time": "2025-07-20 03:21:20",
+        "end_time": "2025-07-20 03:21:20",
+        "execution_time_seconds": 0,
+        "status": "SUCCESS",
+        "original_issue": "282"
+    },
+    "generated_files": {
+        "migration_name": "migration20250720010",
+        "migration_file": "migration20250720010.go",
+        "counter_value": 10
+    },
+    "execution_log": [],
+    "error": null
+}

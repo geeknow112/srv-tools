@@ -1,0 +1,79 @@
+{
+    "execution_info": {
+        "todo_no": "srv-tools#315",
+        "stage": 4,
+        "start_time": "2025-07-20 18:14:44",
+        "end_time": "2025-07-20 18:14:51",
+        "execution_time_seconds": 7.325,
+        "status": "SUCCESS",
+        "original_issue": "315"
+    },
+    "generated_files": {
+        "migration_name": "migration20250720001",
+        "migration_file": "migration20250720001.go",
+        "counter_value": 1
+    },
+    "execution_log": [
+        {
+            "timestamp": "2025-07-20 18:14:44",
+            "event": "実行開始",
+            "details": "ステージ 4 for srv-tools#315"
+        },
+        {
+            "timestamp": "2025-07-20 18:14:44",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo '🎉 Stage 4: Finalization for srv-tools#315'",
+                "return_code": 0,
+                "execution_time": 0.001,
+                "output": "🎉 Stage 4: Finalization for srv-tools#315"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:14:45",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo 'Migration completed: migration20250720001'",
+                "return_code": 0,
+                "execution_time": 0.001,
+                "output": "Migration completed: migration20250720001"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:14:48",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo 'File: migration20250720001.go'",
+                "return_code": 0,
+                "execution_time": 0.002,
+                "output": "File: migration20250720001.go"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:14:49",
+            "event": "コマンド実行",
+            "details": {
+                "command": "ls -la migrations\/migration20250720001.go",
+                "return_code": 0,
+                "execution_time": 0.005,
+                "output": "-rwxrwxrwx 1 youre youre 181 Jul 20 18:14 migrations\/migration20250720001.go"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:14:50",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo '✅ Task srv-tools#315 completed successfully'",
+                "return_code": 0,
+                "execution_time": 0.001,
+                "output": "✅ Task srv-tools#315 completed successfully"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:14:51",
+            "event": "正常完了",
+            "details": "ステージ 4 の実行が完了しました"
+        }
+    ],
+    "error": null
+}

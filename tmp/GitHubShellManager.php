@@ -91,7 +91,11 @@ class GitHubShellManager {
         ];
         
         // JSONレポートファイル作成
-        $report_file = $this->config['log_dir'] . 'execution_report_' . date('Ymd_His') . '.json';
+        $report_dir = $this->config['log_dir'] . 'report/';
+        if (!is_dir($report_dir)) {
+            mkdir($report_dir, 0755, true);
+        }
+        $report_file = $report_dir . 'execution_report_' . date('Ymd_His') . '.json';
         file_put_contents($report_file, json_encode($report, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
         
         // コンソール出力

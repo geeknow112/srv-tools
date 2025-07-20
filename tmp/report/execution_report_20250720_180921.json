@@ -1,0 +1,59 @@
+{
+    "execution_info": {
+        "todo_no": "srv-tools#311",
+        "stage": 3,
+        "start_time": "2025-07-20 18:09:16",
+        "end_time": "2025-07-20 18:09:21",
+        "execution_time_seconds": 5.272,
+        "status": "SUCCESS",
+        "original_issue": "311"
+    },
+    "generated_files": {
+        "migration_name": "migration20250720001",
+        "migration_file": "migration20250720001.go",
+        "counter_value": 1
+    },
+    "execution_log": [
+        {
+            "timestamp": "2025-07-20 18:09:16",
+            "event": "実行開始",
+            "details": "ステージ 3 for srv-tools#311"
+        },
+        {
+            "timestamp": "2025-07-20 18:09:16",
+            "event": "コマンド実行",
+            "details": {
+                "command": "git add .",
+                "return_code": 0,
+                "execution_time": 0.274,
+                "output": ""
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:09:17",
+            "event": "コマンド実行",
+            "details": {
+                "command": "git commit -m 'Fixes geeknow112\/srv-tools#311'",
+                "return_code": 0,
+                "execution_time": 0.36,
+                "output": "[migration20250720001 8fa7366] Fixes geeknow112\/srv-tools#311\n 22 files changed, 1738 insertions(+), 3 deletions(-)\n create mode 100644 .githubsh.json\n create mode 100644 .githubsh_session.json\n create mode 100644 gdata.php\n create mode 100644 migration_count.txt\n create mode 100644 migrations\/migration20250720001.go\n create mode 100644 migrations\/migration20250720002.go\n create mode 100644 migrations\/migration20250720010.go\n create mode 100644 migrations\/migration20250720011.go\n create mode 100644 migrations\/migration20250720014.go\n create mode 100644 tmp\/final_report.md\n create mode 100644 tmp\/pr_api_description.md\n create mode 100644 tmp\/pr_description.md\n create mode 100644 tmp\/pr_v2_description.md\n create mode 100644 tmp\/production_final_report.md\n create mode 100644 tmp\/v21_release_report.md\n create mode 100644 tmp\/v2_release_report.md"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:09:20",
+            "event": "コマンド実行",
+            "details": {
+                "command": "git push origin migration20250720001",
+                "return_code": 0,
+                "execution_time": 1.605,
+                "output": "remote:\nremote: Create a pull request for 'migration20250720001' on GitHub by visiting:\nremote:      https:\/\/github.com\/geeknow112\/srv-tools\/pull\/new\/migration20250720001\nremote:\nTo https:\/\/github.com\/geeknow112\/srv-tools.git\n * [new branch]      migration20250720001 -> migration20250720001"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:09:21",
+            "event": "正常完了",
+            "details": "ステージ 3 の実行が完了しました"
+        }
+    ],
+    "error": null
+}
