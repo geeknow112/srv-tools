@@ -12,8 +12,8 @@
  *   php githubsh.php srv-tools#101 1
  */
 
-require_once __DIR__ . '/config.php';
-require_once __DIR__ . '/helpers.php';
+require_once __DIR__ . '/../models/config.php';
+require_once __DIR__ . '/../helpers/helpers.php';
 require_once __DIR__ . '/GitHubShellManager.php';
 
 try {
@@ -21,7 +21,7 @@ try {
     validateArguments($argv);
     
     // 設定読み込み
-    $config = require __DIR__ . '/config.php';
+    $config = require __DIR__ . '/../models/config.php';
     
     // 必要ファイルチェック
     [$gdata, $count_file] = checkRequiredFiles($config);
