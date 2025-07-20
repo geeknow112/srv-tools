@@ -1,0 +1,129 @@
+{
+    "execution_info": {
+        "todo_no": "srv-tools#315",
+        "stage": 1,
+        "start_time": "2025-07-20 18:13:58",
+        "end_time": "2025-07-20 18:14:08",
+        "execution_time_seconds": 10.149,
+        "status": "SUCCESS",
+        "original_issue": "315"
+    },
+    "generated_files": {
+        "migration_name": "migration20250720001",
+        "migration_file": "migration20250720001.go",
+        "counter_value": 1
+    },
+    "execution_log": [
+        {
+            "timestamp": "2025-07-20 18:13:58",
+            "event": "実行開始",
+            "details": "ステージ 1 for srv-tools#315"
+        },
+        {
+            "timestamp": "2025-07-20 18:13:58",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo '🚀 Stage 1: Preparation for srv-tools#315'",
+                "return_code": 0,
+                "execution_time": 0.001,
+                "output": "🚀 Stage 1: Preparation for srv-tools#315"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:13:59",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo 'Creating migration file: migration20250720001.go'",
+                "return_code": 0,
+                "execution_time": 0.001,
+                "output": "Creating migration file: migration20250720001.go"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:14:00",
+            "event": "コマンド実行",
+            "details": {
+                "command": "touch migrations\/migration20250720001.go",
+                "return_code": 0,
+                "execution_time": 0.004,
+                "output": ""
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:14:01",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo '\/\/ Migration file for srv-tools#315' > migrations\/migration20250720001.go",
+                "return_code": 0,
+                "execution_time": 0.003,
+                "output": ""
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:14:02",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo 'package main' >> migrations\/migration20250720001.go",
+                "return_code": 0,
+                "execution_time": 0.003,
+                "output": ""
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:14:03",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo '' >> migrations\/migration20250720001.go",
+                "return_code": 0,
+                "execution_time": 0.002,
+                "output": ""
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:14:04",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo 'func main() {' >> migrations\/migration20250720001.go",
+                "return_code": 0,
+                "execution_time": 0.002,
+                "output": ""
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:14:05",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo '    \/\/ TODO: Implement migration logic for srv-tools#315' >> migrations\/migration20250720001.go",
+                "return_code": 0,
+                "execution_time": 0.002,
+                "output": ""
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:14:06",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo '}' >> migrations\/migration20250720001.go",
+                "return_code": 0,
+                "execution_time": 0.003,
+                "output": ""
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:14:07",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo '✅ Migration file created successfully'",
+                "return_code": 0,
+                "execution_time": 0.001,
+                "output": "✅ Migration file created successfully"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:14:08",
+            "event": "正常完了",
+            "details": "ステージ 1 の実行が完了しました"
+        }
+    ],
+    "error": null
+}

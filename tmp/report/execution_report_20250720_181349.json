@@ -1,0 +1,59 @@
+{
+    "execution_info": {
+        "todo_no": "srv-tools#315",
+        "stage": 1,
+        "start_time": "2025-07-20 18:13:47",
+        "end_time": "2025-07-20 18:13:49",
+        "execution_time_seconds": 2.045,
+        "status": "FAILED",
+        "original_issue": "315"
+    },
+    "generated_files": {
+        "migration_name": null,
+        "migration_file": null,
+        "counter_value": null
+    },
+    "execution_log": [
+        {
+            "timestamp": "2025-07-20 18:13:47",
+            "event": "実行開始",
+            "details": "ステージ 1 for srv-tools#315"
+        },
+        {
+            "timestamp": "2025-07-20 18:13:47",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo '🚀 Stage 1: Preparation for srv-tools#315'",
+                "return_code": 0,
+                "execution_time": 0.001,
+                "output": "🚀 Stage 1: Preparation for srv-tools#315"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:13:48",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo 'Creating migration file: migration20250720001.go'",
+                "return_code": 0,
+                "execution_time": 0.001,
+                "output": "Creating migration file: migration20250720001.go"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:13:49",
+            "event": "コマンド実行",
+            "details": {
+                "command": "touch migrations\/migration20250720001.go",
+                "return_code": 1,
+                "execution_time": 0.002,
+                "output": "touch: cannot touch 'migrations\/migration20250720001.go': No such file or directory"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:13:49",
+            "event": "エラー発生",
+            "details": "コマンドが失敗しました: touch migrations\/migration20250720001.go\n出力: touch: cannot touch 'migrations\/migration20250720001.go': No such file or directory"
+        }
+    ],
+    "error": "コマンドが失敗しました: touch migrations\/migration20250720001.go\n出力: touch: cannot touch 'migrations\/migration20250720001.go': No such file or directory"
+}

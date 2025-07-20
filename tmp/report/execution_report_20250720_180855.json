@@ -1,0 +1,59 @@
+{
+    "execution_info": {
+        "todo_no": "srv-tools#311",
+        "stage": 2,
+        "start_time": "2025-07-20 18:08:53",
+        "end_time": "2025-07-20 18:08:55",
+        "execution_time_seconds": 2.047,
+        "status": "FAILED",
+        "original_issue": "311"
+    },
+    "generated_files": {
+        "migration_name": null,
+        "migration_file": null,
+        "counter_value": null
+    },
+    "execution_log": [
+        {
+            "timestamp": "2025-07-20 18:08:53",
+            "event": "実行開始",
+            "details": "ステージ 2 for srv-tools#311"
+        },
+        {
+            "timestamp": "2025-07-20 18:08:53",
+            "event": "コマンド実行",
+            "details": {
+                "command": "chown $(whoami):$(whoami) \/mnt\/c\/Users\/youre\/Documents\/git_repo\/srv-tools\/tmp\/..\/migrations\/migration20250720001.go",
+                "return_code": 0,
+                "execution_time": 0.006,
+                "output": ""
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:08:54",
+            "event": "コマンド実行",
+            "details": {
+                "command": "sed -i 's\/test_value1\/srv-tools#311\/g' \/mnt\/c\/Users\/youre\/Documents\/git_repo\/srv-tools\/tmp\/..\/migrations\/migration20250720001.go",
+                "return_code": 0,
+                "execution_time": 0.008,
+                "output": ""
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:08:55",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo '2025-07-20 18:08:53: Applied modifications for srv-tools#311' >> ..\/logs\/modification_log.txt",
+                "return_code": 2,
+                "execution_time": 0.001,
+                "output": ""
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:08:55",
+            "event": "エラー発生",
+            "details": "コマンドが失敗しました: echo '2025-07-20 18:08:53: Applied modifications for srv-tools#311' >> ..\/logs\/modification_log.txt\n出力: "
+        }
+    ],
+    "error": "コマンドが失敗しました: echo '2025-07-20 18:08:53: Applied modifications for srv-tools#311' >> ..\/logs\/modification_log.txt\n出力: "
+}

@@ -1,0 +1,59 @@
+{
+    "execution_info": {
+        "todo_no": "srv-tools#293",
+        "stage": 1,
+        "start_time": "2025-07-20 03:34:04",
+        "end_time": "2025-07-20 03:34:07",
+        "execution_time_seconds": 3.16,
+        "status": "SUCCESS",
+        "original_issue": "293"
+    },
+    "generated_files": {
+        "migration_name": "migration20250720002",
+        "migration_file": "migration20250720002.go",
+        "counter_value": 2
+    },
+    "execution_log": [
+        {
+            "timestamp": "2025-07-20 03:34:04",
+            "event": "実行開始",
+            "details": "ステージ 1 for srv-tools#293"
+        },
+        {
+            "timestamp": "2025-07-20 03:34:04",
+            "event": "コマンド実行",
+            "details": {
+                "command": "cd \/mnt\/c\/Users\/youre\/Documents\/git_repo\/srv-tools\/tmp\/..\/migrations\/",
+                "return_code": 0,
+                "execution_time": 0.002,
+                "output": ""
+            }
+        },
+        {
+            "timestamp": "2025-07-20 03:34:05",
+            "event": "コマンド実行",
+            "details": {
+                "command": "git checkout -b migration20250720002",
+                "return_code": 0,
+                "execution_time": 0.116,
+                "output": "Switched to a new branch 'migration20250720002'"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 03:34:06",
+            "event": "コマンド実行",
+            "details": {
+                "command": "cp -p \/mnt\/c\/Users\/youre\/Documents\/git_repo\/srv-tools\/tmp\/..\/migrations\/migration-20250703-001.go \/mnt\/c\/Users\/youre\/Documents\/git_repo\/srv-tools\/tmp\/..\/migrations\/migration20250720002.go",
+                "return_code": 0,
+                "execution_time": 0.01,
+                "output": ""
+            }
+        },
+        {
+            "timestamp": "2025-07-20 03:34:07",
+            "event": "正常完了",
+            "details": "ステージ 1 の実行が完了しました"
+        }
+    ],
+    "error": null
+}

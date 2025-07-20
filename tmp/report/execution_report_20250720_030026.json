@@ -1,0 +1,98 @@
+{
+    "execution_info": {
+        "todo_no": "srv-tools#278",
+        "stage": 4,
+        "start_time": "2025-07-20 03:00:19",
+        "end_time": "2025-07-20 03:00:26",
+        "execution_time_seconds": 7.209,
+        "status": "FAILED"
+    },
+    "generated_files": {
+        "migration_name": null,
+        "migration_file": null,
+        "counter_value": null
+    },
+    "execution_log": [
+        {
+            "timestamp": "2025-07-20 03:00:19",
+            "event": "Starting execution",
+            "details": "Stage 4 for srv-tools#278"
+        },
+        {
+            "timestamp": "2025-07-20 03:00:19",
+            "event": "Command executed",
+            "details": {
+                "command": "echo 'Waiting for Pull Request merge...'",
+                "return_code": 0,
+                "execution_time": 0.001,
+                "output": "Waiting for Pull Request merge..."
+            }
+        },
+        {
+            "timestamp": "2025-07-20 03:00:20",
+            "event": "Command executed",
+            "details": {
+                "command": "echo 'Please merge the Pull Request manually, then press Enter to continue.'",
+                "return_code": 0,
+                "execution_time": 0.002,
+                "output": "Please merge the Pull Request manually, then press Enter to continue."
+            }
+        },
+        {
+            "timestamp": "2025-07-20 03:00:21",
+            "event": "Command executed",
+            "details": {
+                "command": "read -p 'Press Enter after merging the Pull Request: ' dummy",
+                "return_code": 0,
+                "execution_time": 0.002,
+                "output": ""
+            }
+        },
+        {
+            "timestamp": "2025-07-20 03:00:22",
+            "event": "Command executed",
+            "details": {
+                "command": "git add . || echo 'No changes to add'",
+                "return_code": 0,
+                "execution_time": 0.049,
+                "output": ""
+            }
+        },
+        {
+            "timestamp": "2025-07-20 03:00:23",
+            "event": "Command executed",
+            "details": {
+                "command": "git commit -m 'Update logs before cleanup' || echo 'No changes to commit'",
+                "return_code": 0,
+                "execution_time": 0.292,
+                "output": "[migration20250720009 fa11532] Update logs before cleanup\n 1 file changed, 17 insertions(+)"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 03:00:25",
+            "event": "Command executed",
+            "details": {
+                "command": "git stash || echo 'No changes to stash'",
+                "return_code": 0,
+                "execution_time": 0.616,
+                "output": "Saved working directory and index state WIP on migration20250720009: fa11532 Update logs before cleanup"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 03:00:26",
+            "event": "Command executed",
+            "details": {
+                "command": "git checkout main",
+                "return_code": 1,
+                "execution_time": 0.187,
+                "output": "error: Your local changes to the following files would be overwritten by checkout:\n\ttmp\/githubsh.log\nPlease commit your changes or stash them before you switch branches.\nAborting"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 03:00:26",
+            "event": "Error occurred",
+            "details": "Command failed: git checkout main\nOutput: error: Your local changes to the following files would be overwritten by checkout:\n\ttmp\/githubsh.log\nPlease commit your changes or stash them before you switch branches.\nAborting"
+        }
+    ],
+    "error": "Command failed: git checkout main\nOutput: error: Your local changes to the following files would be overwritten by checkout:\n\ttmp\/githubsh.log\nPlease commit your changes or stash them before you switch branches.\nAborting"
+}

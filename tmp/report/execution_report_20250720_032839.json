@@ -1,0 +1,59 @@
+{
+    "execution_info": {
+        "todo_no": "srv-tools#291",
+        "stage": 1,
+        "start_time": "2025-07-20 03:28:36",
+        "end_time": "2025-07-20 03:28:39",
+        "execution_time_seconds": 3.169,
+        "status": "SUCCESS",
+        "original_issue": "291"
+    },
+    "generated_files": {
+        "migration_name": "migration20250720001",
+        "migration_file": "migration20250720001.go",
+        "counter_value": 1
+    },
+    "execution_log": [
+        {
+            "timestamp": "2025-07-20 03:28:36",
+            "event": "実行開始",
+            "details": "ステージ 1 for srv-tools#291"
+        },
+        {
+            "timestamp": "2025-07-20 03:28:36",
+            "event": "コマンド実行",
+            "details": {
+                "command": "cd \/mnt\/c\/Users\/youre\/Documents\/git_repo\/srv-tools\/tmp\/..\/migrations\/",
+                "return_code": 0,
+                "execution_time": 0.001,
+                "output": ""
+            }
+        },
+        {
+            "timestamp": "2025-07-20 03:28:37",
+            "event": "コマンド実行",
+            "details": {
+                "command": "git checkout -b migration20250720001",
+                "return_code": 0,
+                "execution_time": 0.116,
+                "output": "Switched to a new branch 'migration20250720001'"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 03:28:38",
+            "event": "コマンド実行",
+            "details": {
+                "command": "cp -p \/mnt\/c\/Users\/youre\/Documents\/git_repo\/srv-tools\/tmp\/..\/migrations\/migration-20250703-001.go \/mnt\/c\/Users\/youre\/Documents\/git_repo\/srv-tools\/tmp\/..\/migrations\/migration20250720001.go",
+                "return_code": 0,
+                "execution_time": 0.009,
+                "output": ""
+            }
+        },
+        {
+            "timestamp": "2025-07-20 03:28:39",
+            "event": "正常完了",
+            "details": "ステージ 1 の実行が完了しました"
+        }
+    ],
+    "error": null
+}

@@ -1,0 +1,49 @@
+{
+    "execution_info": {
+        "todo_no": "srv-tools#293",
+        "stage": 1,
+        "start_time": "2025-07-20 03:33:45",
+        "end_time": "2025-07-20 03:33:46",
+        "execution_time_seconds": 1.048,
+        "status": "FAILED",
+        "original_issue": "293"
+    },
+    "generated_files": {
+        "migration_name": null,
+        "migration_file": null,
+        "counter_value": null
+    },
+    "execution_log": [
+        {
+            "timestamp": "2025-07-20 03:33:45",
+            "event": "実行開始",
+            "details": "ステージ 1 for srv-tools#293"
+        },
+        {
+            "timestamp": "2025-07-20 03:33:45",
+            "event": "コマンド実行",
+            "details": {
+                "command": "cd \/mnt\/c\/Users\/youre\/Documents\/git_repo\/srv-tools\/tmp\/..\/migrations\/",
+                "return_code": 0,
+                "execution_time": 0.001,
+                "output": ""
+            }
+        },
+        {
+            "timestamp": "2025-07-20 03:33:46",
+            "event": "コマンド実行",
+            "details": {
+                "command": "git checkout -b migration20250720001",
+                "return_code": 128,
+                "execution_time": 0.021,
+                "output": "fatal: a branch named 'migration20250720001' already exists"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 03:33:46",
+            "event": "エラー発生",
+            "details": "コマンドが失敗しました: git checkout -b migration20250720001\n出力: fatal: a branch named 'migration20250720001' already exists"
+        }
+    ],
+    "error": "コマンドが失敗しました: git checkout -b migration20250720001\n出力: fatal: a branch named 'migration20250720001' already exists"
+}

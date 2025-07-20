@@ -1,0 +1,99 @@
+{
+    "execution_info": {
+        "todo_no": "srv-tools#311",
+        "stage": 4,
+        "start_time": "2025-07-20 18:09:31",
+        "end_time": "2025-07-20 18:10:00",
+        "execution_time_seconds": 29.038,
+        "status": "FAILED",
+        "original_issue": "311"
+    },
+    "generated_files": {
+        "migration_name": null,
+        "migration_file": null,
+        "counter_value": null
+    },
+    "execution_log": [
+        {
+            "timestamp": "2025-07-20 18:09:31",
+            "event": "実行開始",
+            "details": "ステージ 4 for srv-tools#311"
+        },
+        {
+            "timestamp": "2025-07-20 18:09:31",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo 'Waiting for Pull Request merge...'",
+                "return_code": 0,
+                "execution_time": 0.001,
+                "output": "Waiting for Pull Request merge..."
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:09:32",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo 'Please merge the Pull Request manually, then press Enter to continue.'",
+                "return_code": 0,
+                "execution_time": 0.001,
+                "output": "Please merge the Pull Request manually, then press Enter to continue."
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:09:54",
+            "event": "コマンド実行",
+            "details": {
+                "command": "read -p 'Press Enter after merging the Pull Request: ' dummy",
+                "return_code": 0,
+                "execution_time": 21.681,
+                "output": "Press Enter after merging the Pull Request:"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:09:56",
+            "event": "コマンド実行",
+            "details": {
+                "command": "git add . || echo 'No changes to add'",
+                "return_code": 0,
+                "execution_time": 0.161,
+                "output": ""
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:09:57",
+            "event": "コマンド実行",
+            "details": {
+                "command": "git commit -m 'Update logs before cleanup' || echo 'No changes to commit'",
+                "return_code": 0,
+                "execution_time": 0.313,
+                "output": "[migration20250720001 d4ea62b] Update logs before cleanup\n 1 file changed, 17 insertions(+)"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:09:58",
+            "event": "コマンド実行",
+            "details": {
+                "command": "git stash || echo 'No changes to stash'",
+                "return_code": 0,
+                "execution_time": 0.605,
+                "output": "Saved working directory and index state WIP on migration20250720001: d4ea62b Update logs before cleanup"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:10:00",
+            "event": "コマンド実行",
+            "details": {
+                "command": "git checkout main",
+                "return_code": 1,
+                "execution_time": 0.215,
+                "output": "error: Your local changes to the following files would be overwritten by checkout:\n\ttmp\/githubsh.log\nPlease commit your changes or stash them before you switch branches.\nAborting"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:10:00",
+            "event": "エラー発生",
+            "details": "コマンドが失敗しました: git checkout main\n出力: error: Your local changes to the following files would be overwritten by checkout:\n\ttmp\/githubsh.log\nPlease commit your changes or stash them before you switch branches.\nAborting"
+        }
+    ],
+    "error": "コマンドが失敗しました: git checkout main\n出力: error: Your local changes to the following files would be overwritten by checkout:\n\ttmp\/githubsh.log\nPlease commit your changes or stash them before you switch branches.\nAborting"
+}

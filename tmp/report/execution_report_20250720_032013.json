@@ -1,0 +1,59 @@
+{
+    "execution_info": {
+        "todo_no": "srv-tools#287",
+        "stage": 3,
+        "start_time": "2025-07-20 03:20:08",
+        "end_time": "2025-07-20 03:20:13",
+        "execution_time_seconds": 4.96,
+        "status": "SUCCESS",
+        "original_issue": "287"
+    },
+    "generated_files": {
+        "migration_name": "migration20250720011",
+        "migration_file": "migration20250720011.go",
+        "counter_value": 11
+    },
+    "execution_log": [
+        {
+            "timestamp": "2025-07-20 03:20:08",
+            "event": "実行開始",
+            "details": "ステージ 3 for srv-tools#287"
+        },
+        {
+            "timestamp": "2025-07-20 03:20:08",
+            "event": "コマンド実行",
+            "details": {
+                "command": "git add .",
+                "return_code": 0,
+                "execution_time": 0.051,
+                "output": ""
+            }
+        },
+        {
+            "timestamp": "2025-07-20 03:20:09",
+            "event": "コマンド実行",
+            "details": {
+                "command": "git commit -m 'Fixes geeknow112\/srv-tools#287'",
+                "return_code": 0,
+                "execution_time": 0.3,
+                "output": "[migration20250720011 9663ea6] Fixes geeknow112\/srv-tools#287\n 1 file changed, 30 insertions(+)"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 03:20:11",
+            "event": "コマンド実行",
+            "details": {
+                "command": "git push origin migration20250720011",
+                "return_code": 0,
+                "execution_time": 1.579,
+                "output": "remote:\nremote: Create a pull request for 'migration20250720011' on GitHub by visiting:\nremote:      https:\/\/github.com\/geeknow112\/srv-tools\/pull\/new\/migration20250720011\nremote:\nTo https:\/\/github.com\/geeknow112\/srv-tools.git\n * [new branch]      migration20250720011 -> migration20250720011"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 03:20:12",
+            "event": "正常完了",
+            "details": "ステージ 3 の実行が完了しました"
+        }
+    ],
+    "error": null
+}

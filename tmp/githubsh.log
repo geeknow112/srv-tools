@@ -341,3 +341,418 @@ Output:
 [2025-07-20 03:28:39] [INFO] ステージ 1 for srv-tools#291 が正常に完了しました
 [2025-07-20 03:28:39] [INFO] 実行レポートを生成しました: /mnt/c/Users/youre/Documents/git_repo/srv-tools/tmp/execution_report_20250720_032839.json
 [2025-07-20 03:28:39] [INFO] Process completed successfully!
+[2025-07-20 09:13:42] [INFO] Starting GitHub Shell Manager
+[2025-07-20 09:13:42] [INFO] Todo No: Test GitHub Shell Manager v2.0 - Production Run, Stage: 0
+[2025-07-20 09:13:42] [INFO] Creating GitHub issue: Test GitHub Shell Manager v2.0 - Production Run
+[2025-07-20 09:13:43] [INFO] GitHub issue created: https://github.com/geeknow112/srv-tools/issues/315
+[2025-07-20 09:13:43] [INFO] Process completed successfully!
+[2025-07-20 09:13:47] [INFO] Starting GitHub Shell Manager
+[2025-07-20 09:13:47] [INFO] Todo No: srv-tools#315, Stage: 1
+[2025-07-20 18:13:47] [INFO] 実行中: echo '🚀 Stage 1: Preparation for srv-tools#315'
+[2025-07-20 18:13:47] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:13:48] [INFO] 実行中: echo 'Creating migration file: migration20250720001.go'
+[2025-07-20 18:13:48] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:13:49] [INFO] 実行中: touch migrations/migration20250720001.go
+[2025-07-20 18:13:49] [ERROR] エラー: コマンドが失敗しました: touch migrations/migration20250720001.go
+出力: touch: cannot touch 'migrations/migration20250720001.go': No such file or directory
+[2025-07-20 18:13:50] [INFO] GitHubレポートを作成しました: https://github.com/geeknow112/srv-tools/issues/316
+[2025-07-20 18:13:50] [INFO] 実行レポートを生成しました: /mnt/c/Users/youre/Documents/git_repo/srv-tools/tmp/execution_report_20250720_181349.json
+[2025-07-20 18:13:50] [ERROR] Fatal Error: コマンドが失敗しました: touch migrations/migration20250720001.go
+出力: touch: cannot touch 'migrations/migration20250720001.go': No such file or directory
+[2025-07-20 09:13:58] [INFO] Starting GitHub Shell Manager
+[2025-07-20 09:13:58] [INFO] Todo No: srv-tools#315, Stage: 1
+[2025-07-20 18:13:58] [INFO] 実行中: echo '🚀 Stage 1: Preparation for srv-tools#315'
+[2025-07-20 18:13:58] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:13:59] [INFO] 実行中: echo 'Creating migration file: migration20250720001.go'
+[2025-07-20 18:13:59] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:14:00] [INFO] 実行中: touch migrations/migration20250720001.go
+[2025-07-20 18:14:00] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:14:01] [INFO] 実行中: echo '// Migration file for srv-tools#315' > migrations/migration20250720001.go
+[2025-07-20 18:14:01] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:14:02] [INFO] 実行中: echo 'package main' >> migrations/migration20250720001.go
+[2025-07-20 18:14:02] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:14:03] [INFO] 実行中: echo '' >> migrations/migration20250720001.go
+[2025-07-20 18:14:03] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:14:04] [INFO] 実行中: echo 'func main() {' >> migrations/migration20250720001.go
+[2025-07-20 18:14:04] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:14:05] [INFO] 実行中: echo '    // TODO: Implement migration logic for srv-tools#315' >> migrations/migration20250720001.go
+[2025-07-20 18:14:05] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:14:06] [INFO] 実行中: echo '}' >> migrations/migration20250720001.go
+[2025-07-20 18:14:06] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:14:07] [INFO] 実行中: echo '✅ Migration file created successfully'
+[2025-07-20 18:14:07] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:14:08] [INFO] ステージ 1 for srv-tools#315 が正常に完了しました
+[2025-07-20 18:14:08] [INFO] 実行レポートを生成しました: /mnt/c/Users/youre/Documents/git_repo/srv-tools/tmp/execution_report_20250720_181408.json
+[2025-07-20 18:14:08] [INFO] Process completed successfully!
+[2025-07-20 09:14:18] [INFO] Starting GitHub Shell Manager
+[2025-07-20 09:14:18] [INFO] Todo No: srv-tools#315, Stage: 2
+[2025-07-20 18:14:18] [INFO] 実行中: echo '🔧 Stage 2: Implementation for srv-tools#315'
+[2025-07-20 18:14:18] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:14:19] [INFO] 実行中: echo 'Modifying migration file: migration20250720001.go'
+[2025-07-20 18:14:19] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:14:20] [INFO] 実行中: echo '// Updated at: 2025-07-20 18:14:18' >> migrations/migration20250720001.go
+[2025-07-20 18:14:21] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:14:22] [INFO] 実行中: echo '// Task: srv-tools#315' >> migrations/migration20250720001.go
+[2025-07-20 18:14:22] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:14:23] [INFO] 実行中: ls -la migrations/migration20250720001.go
+[2025-07-20 18:14:23] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:14:24] [INFO] 実行中: echo '✅ File modification completed'
+[2025-07-20 18:14:24] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:14:25] [INFO] ステージ 2 for srv-tools#315 が正常に完了しました
+[2025-07-20 18:14:25] [INFO] 実行レポートを生成しました: /mnt/c/Users/youre/Documents/git_repo/srv-tools/tmp/execution_report_20250720_181425.json
+[2025-07-20 18:14:25] [INFO] Process completed successfully!
+[2025-07-20 09:14:34] [INFO] Starting GitHub Shell Manager
+[2025-07-20 09:14:34] [INFO] Todo No: srv-tools#315, Stage: 3
+[2025-07-20 18:14:34] [INFO] 実行中: echo '📤 Stage 3: Git operations for srv-tools#315'
+[2025-07-20 18:14:34] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:14:35] [INFO] 実行中: git status
+[2025-07-20 18:14:35] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:14:36] [INFO] 実行中: git add migrations/migration20250720001.go
+[2025-07-20 18:14:36] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:14:37] [INFO] 実行中: echo '✅ Files staged for commit'
+[2025-07-20 18:14:37] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:14:38] [INFO] 実行中: echo 'Note: In production, this would commit and push changes'
+[2025-07-20 18:14:38] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:14:39] [INFO] ステージ 3 for srv-tools#315 が正常に完了しました
+[2025-07-20 18:14:39] [INFO] 実行レポートを生成しました: /mnt/c/Users/youre/Documents/git_repo/srv-tools/tmp/execution_report_20250720_181439.json
+[2025-07-20 18:14:39] [INFO] Process completed successfully!
+[2025-07-20 09:14:44] [INFO] Starting GitHub Shell Manager
+[2025-07-20 09:14:44] [INFO] Todo No: srv-tools#315, Stage: 4
+[2025-07-20 18:14:44] [INFO] 実行中: echo '🎉 Stage 4: Finalization for srv-tools#315'
+[2025-07-20 18:14:44] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:14:45] [INFO] 実行中: echo 'Migration completed: migration20250720001'
+[2025-07-20 18:14:45] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:14:48] [INFO] 実行中: echo 'File: migration20250720001.go'
+[2025-07-20 18:14:48] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:14:49] [INFO] 実行中: ls -la migrations/migration20250720001.go
+[2025-07-20 18:14:49] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:14:50] [INFO] 実行中: echo '✅ Task srv-tools#315 completed successfully'
+[2025-07-20 18:14:50] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:14:51] [INFO] カウンターを更新しました: 2 (月: 202507)
+[2025-07-20 18:14:51] [INFO] ステージ 4 for srv-tools#315 が正常に完了しました
+[2025-07-20 18:14:52] [INFO] GitHubレポートを作成しました: https://github.com/geeknow112/srv-tools/issues/317
+[2025-07-20 18:14:54] [INFO] 元のIssue #315 をクローズしました
+[2025-07-20 18:14:54] [INFO] 実行レポートを生成しました: /mnt/c/Users/youre/Documents/git_repo/srv-tools/tmp/execution_report_20250720_181451.json
+[2025-07-20 18:14:54] [INFO] Process completed successfully!
+[2025-07-20 09:18:28] [INFO] Starting GitHub Shell Manager
+[2025-07-20 09:18:28] [INFO] Todo No: Proper Git Workflow Test - Universal GitHub Shell Manager v2.0, Stage: 0
+[2025-07-20 09:18:28] [INFO] Creating GitHub issue: Proper Git Workflow Test - Universal GitHub Shell Manager v2.0
+[2025-07-20 09:18:29] [INFO] GitHub issue created: https://github.com/geeknow112/srv-tools/issues/318
+[2025-07-20 09:18:29] [INFO] Process completed successfully!
+[2025-07-20 09:18:36] [INFO] Starting GitHub Shell Manager
+[2025-07-20 09:18:36] [INFO] Todo No: srv-tools#318, Stage: 1
+[2025-07-20 18:18:36] [INFO] 実行中: echo '🚀 Starting Stage 1: Preparation for srv-tools#318'
+[2025-07-20 18:18:36] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:18:37] [INFO] 実行中: echo '📁 Creating migration file: migration20250720002.go'
+[2025-07-20 18:18:37] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:18:38] [INFO] 実行中: touch migrations/migration20250720002.go
+[2025-07-20 18:18:38] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:18:39] [INFO] 実行中: echo '📝 Adding template content'
+[2025-07-20 18:18:39] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:18:40] [INFO] 実行中: echo 'package main
+
+import "fmt"
+
+// Migration: migration20250720002
+// Created: 2025-07-20 18:18:36
+// Issue: srv-tools#318
+
+func main() {
+	fmt.Println("Migration migration20250720002 executed successfully")
+}' > migrations/migration20250720002.go
+[2025-07-20 18:18:40] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:18:41] [INFO] 実行中: echo '✅ Preparation completed for srv-tools#318'
+[2025-07-20 18:18:41] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:18:42] [INFO] ステージ 1 for srv-tools#318 が正常に完了しました
+[2025-07-20 18:18:42] [INFO] 実行レポートを生成しました: /mnt/c/Users/youre/Documents/git_repo/srv-tools/tmp/execution_report_20250720_181842.json
+[2025-07-20 18:18:42] [INFO] Process completed successfully!
+[2025-07-20 09:19:00] [INFO] Starting GitHub Shell Manager
+[2025-07-20 09:19:00] [INFO] Todo No: srv-tools#318, Stage: 2
+[2025-07-20 18:19:00] [INFO] 実行中: echo '🔧 Starting Stage 2: Implementation for srv-tools#318'
+[2025-07-20 18:19:00] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:01] [INFO] 実行中: echo '📊 Processing migration: migration20250720002'
+[2025-07-20 18:19:01] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:02] [INFO] 実行中: ls -la migrations/migration20250720002.go
+[2025-07-20 18:19:02] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:03] [INFO] 実行中: echo '🔍 Validating file content'
+[2025-07-20 18:19:03] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:04] [INFO] 実行中: head -5 migrations/migration20250720002.go
+[2025-07-20 18:19:04] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:05] [INFO] 実行中: echo '📝 Adding to git'
+[2025-07-20 18:19:05] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:06] [INFO] 実行中: git add migrations/migration20250720002.go
+[2025-07-20 18:19:06] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:07] [INFO] 実行中: echo '✅ Implementation completed for srv-tools#318'
+[2025-07-20 18:19:07] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:08] [INFO] ステージ 2 for srv-tools#318 が正常に完了しました
+[2025-07-20 18:19:08] [INFO] 実行レポートを生成しました: /mnt/c/Users/youre/Documents/git_repo/srv-tools/tmp/execution_report_20250720_181908.json
+[2025-07-20 18:19:08] [INFO] Process completed successfully!
+[2025-07-20 09:19:15] [INFO] Starting GitHub Shell Manager
+[2025-07-20 09:19:15] [INFO] Todo No: srv-tools#318, Stage: 3
+[2025-07-20 18:19:15] [INFO] 実行中: echo '🧪 Starting Stage 3: Testing and Pull Request for srv-tools#318'
+[2025-07-20 18:19:15] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:16] [INFO] 実行中: echo '🔍 Running tests for migration: migration20250720002'
+[2025-07-20 18:19:16] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:17] [INFO] 実行中: echo '📋 File validation test'
+[2025-07-20 18:19:17] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:18] [INFO] 実行中: test -f migrations/migration20250720002.go && echo 'File exists ✅' || echo 'File missing ❌'
+[2025-07-20 18:19:18] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:19] [INFO] 実行中: echo '📏 File size check'
+[2025-07-20 18:19:19] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:20] [INFO] 実行中: wc -l migrations/migration20250720002.go
+[2025-07-20 18:19:20] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:24] [INFO] 実行中: echo '🌿 Creating feature branch: feature/srv-tools-318-migration20250720002'
+[2025-07-20 18:19:24] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:25] [INFO] 実行中: git checkout -b feature/srv-tools-318-migration20250720002
+[2025-07-20 18:19:25] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:26] [INFO] 実行中: echo '💾 Committing changes'
+[2025-07-20 18:19:26] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:27] [INFO] 実行中: git commit -m 'feat: Add migration20250720002 for srv-tools#318
+
+- Created migration file: migration20250720002.go
+- Issue: srv-tools#318
+- Auto-generated by Universal GitHub Shell Manager v2.0'
+[2025-07-20 18:19:27] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:28] [INFO] 実行中: echo '📤 Pushing branch'
+[2025-07-20 18:19:28] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:29] [INFO] 実行中: git push -u origin feature/srv-tools-318-migration20250720002
+[2025-07-20 18:19:31] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:32] [INFO] 実行中: echo '🔄 Creating Pull Request'
+[2025-07-20 18:19:32] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:33] [INFO] 実行中: gh pr create --title 'feat: migration20250720002 for srv-tools#318' --body '## 概要
+srv-tools#318 の対応として migration20250720002 を追加しました。
+
+## 変更内容
+- マイグレーションファイル: \`migration20250720002.go\`
+- 自動生成日時: 2025-07-20 18:19:15
+- Universal GitHub Shell Manager: v2.0
+
+## 関連Issue
+Closes srv-tools#318' --base main --head feature/srv-tools-318-migration20250720002
+[2025-07-20 18:19:34] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:35] [INFO] 実行中: echo '📋 Test results: All tests passed ✅'
+[2025-07-20 18:19:35] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:36] [INFO] 実行中: echo '✅ Testing and PR creation completed for srv-tools#318'
+[2025-07-20 18:19:36] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:37] [INFO] ステージ 3 for srv-tools#318 が正常に完了しました
+[2025-07-20 18:19:37] [INFO] 実行レポートを生成しました: /mnt/c/Users/youre/Documents/git_repo/srv-tools/tmp/execution_report_20250720_181937.json
+[2025-07-20 18:19:38] [INFO] Process completed successfully!
+[2025-07-20 09:19:47] [INFO] Starting GitHub Shell Manager
+[2025-07-20 09:19:47] [INFO] Todo No: srv-tools#318, Stage: 4
+[2025-07-20 18:19:47] [INFO] 実行中: echo '🏁 Starting Stage 4: Finalization for srv-tools#318'
+[2025-07-20 18:19:47] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:48] [INFO] 実行中: echo '📦 Finalizing migration: migration20250720002'
+[2025-07-20 18:19:48] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:49] [INFO] 実行中: echo '📄 Migration file: migrations/migration20250720002.go'
+[2025-07-20 18:19:49] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:50] [INFO] 実行中: echo '📊 File size: ' && wc -c migrations/migration20250720002.go
+[2025-07-20 18:19:50] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:51] [INFO] 実行中: echo '🔙 Switching back to main branch'
+[2025-07-20 18:19:51] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:52] [INFO] 実行中: git checkout main
+[2025-07-20 18:19:52] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:53] [INFO] 実行中: echo '📝 Updating migration count'
+[2025-07-20 18:19:53] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:54] [INFO] 実行中: echo '1' > migration_count.txt
+[2025-07-20 18:19:54] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:19:55] [INFO] 実行中: gh issue comment 318 --body '✅ **Migration and Pull Request completed successfully**
+
+- Migration file: \`migrations/migration20250720002.go\`
+- Pull Request: Created and ready for review
+- Status: Ready for merge
+- Completed: 2025-07-20 18:19:47
+- Universal GitHub Shell Manager: v2.0
+
+## ワークフロー実行結果
+- ✅ Stage 1: 準備完了
+- ✅ Stage 2: 実装完了
+- ✅ Stage 3: テスト＆PR作成完了
+- ✅ Stage 4: 完了処理実行
+
+**Universal GitHub Shell Manager v2.0 実行成功** 🎉'
+[2025-07-20 18:19:59] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:20:00] [INFO] 実行中: echo '🎉 Finalization completed for srv-tools#318 ✅'
+[2025-07-20 18:20:00] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:20:01] [INFO] 実行中: echo '👀 Please review and merge the Pull Request to complete the workflow'
+[2025-07-20 18:20:01] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:20:02] [INFO] カウンターを更新しました: 3 (月: 202507)
+[2025-07-20 18:20:02] [INFO] ステージ 4 for srv-tools#318 が正常に完了しました
+[2025-07-20 18:20:03] [INFO] GitHubレポートを作成しました: https://github.com/geeknow112/srv-tools/issues/320
+[2025-07-20 18:20:05] [INFO] 元のIssue #318 をクローズしました
+[2025-07-20 18:20:05] [INFO] 実行レポートを生成しました: /mnt/c/Users/youre/Documents/git_repo/srv-tools/tmp/execution_report_20250720_182002.json
+[2025-07-20 18:20:05] [INFO] Process completed successfully!
+[2025-07-20 09:23:07] [INFO] Starting GitHub Shell Manager
+[2025-07-20 09:23:07] [INFO] Todo No: Test PR Merge Workflow - Proper Stage 4 Execution, Stage: 0
+[2025-07-20 09:23:07] [INFO] Creating GitHub issue: Test PR Merge Workflow - Proper Stage 4 Execution
+[2025-07-20 09:23:08] [INFO] GitHub issue created: https://github.com/geeknow112/srv-tools/issues/321
+[2025-07-20 09:23:08] [INFO] Process completed successfully!
+[2025-07-20 09:23:18] [INFO] Starting GitHub Shell Manager
+[2025-07-20 09:23:18] [INFO] Todo No: srv-tools#321, Stage: 1
+[2025-07-20 18:23:18] [INFO] 実行中: echo '🚀 Starting Stage 1: Preparation for srv-tools#321'
+[2025-07-20 18:23:18] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:23:19] [INFO] 実行中: echo '📁 Creating migration file: migration20250720003.go'
+[2025-07-20 18:23:19] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:23:20] [INFO] 実行中: touch migrations/migration20250720003.go
+[2025-07-20 18:23:20] [ERROR] エラー: コマンドが失敗しました: touch migrations/migration20250720003.go
+出力: touch: cannot touch 'migrations/migration20250720003.go': No such file or directory
+[2025-07-20 18:23:21] [INFO] GitHubレポートを作成しました: https://github.com/geeknow112/srv-tools/issues/322
+[2025-07-20 18:23:21] [INFO] 実行レポートを生成しました: /mnt/c/Users/youre/Documents/git_repo/srv-tools/tmp/execution_report_20250720_182320.json
+[2025-07-20 18:23:21] [ERROR] Fatal Error: コマンドが失敗しました: touch migrations/migration20250720003.go
+出力: touch: cannot touch 'migrations/migration20250720003.go': No such file or directory
+[2025-07-20 09:23:36] [INFO] Starting GitHub Shell Manager
+[2025-07-20 09:23:36] [INFO] Todo No: srv-tools#321, Stage: 1
+[2025-07-20 18:23:36] [INFO] 実行中: echo '🚀 Starting Stage 1: Preparation for srv-tools#321'
+[2025-07-20 18:23:36] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:23:37] [INFO] 実行中: echo '📁 Creating migration file: migration20250720003.go'
+[2025-07-20 18:23:37] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:23:38] [INFO] 実行中: touch migrations/migration20250720003.go
+[2025-07-20 18:23:38] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:23:39] [INFO] 実行中: echo '📝 Adding template content'
+[2025-07-20 18:23:39] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:23:41] [INFO] 実行中: echo 'package main
+
+import "fmt"
+
+// Migration: migration20250720003
+// Created: 2025-07-20 18:23:36
+// Issue: srv-tools#321
+
+func main() {
+	fmt.Println("Migration migration20250720003 executed successfully")
+}' > migrations/migration20250720003.go
+[2025-07-20 18:23:41] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:23:42] [INFO] 実行中: echo '✅ Preparation completed for srv-tools#321'
+[2025-07-20 18:23:42] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:23:43] [INFO] ステージ 1 for srv-tools#321 が正常に完了しました
+[2025-07-20 18:23:43] [INFO] 実行レポートを生成しました: /mnt/c/Users/youre/Documents/git_repo/srv-tools/tmp/execution_report_20250720_182343.json
+[2025-07-20 18:23:43] [INFO] Process completed successfully!
+[2025-07-20 09:23:49] [INFO] Starting GitHub Shell Manager
+[2025-07-20 09:23:49] [INFO] Todo No: srv-tools#321, Stage: 2
+[2025-07-20 18:23:49] [INFO] 実行中: echo '🔧 Starting Stage 2: Implementation for srv-tools#321'
+[2025-07-20 18:23:49] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:23:50] [INFO] 実行中: echo '📊 Processing migration: migration20250720003'
+[2025-07-20 18:23:50] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:23:51] [INFO] 実行中: ls -la migrations/migration20250720003.go
+[2025-07-20 18:23:51] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:23:52] [INFO] 実行中: echo '🔍 Validating file content'
+[2025-07-20 18:23:52] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:23:53] [INFO] 実行中: head -5 migrations/migration20250720003.go
+[2025-07-20 18:23:53] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:23:54] [INFO] 実行中: echo '📝 Adding to git'
+[2025-07-20 18:23:54] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:23:55] [INFO] 実行中: git add migrations/migration20250720003.go
+[2025-07-20 18:23:55] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:23:56] [INFO] 実行中: echo '✅ Implementation completed for srv-tools#321'
+[2025-07-20 18:23:56] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:23:59] [INFO] ステージ 2 for srv-tools#321 が正常に完了しました
+[2025-07-20 18:23:59] [INFO] 実行レポートを生成しました: /mnt/c/Users/youre/Documents/git_repo/srv-tools/tmp/execution_report_20250720_182359.json
+[2025-07-20 18:23:59] [INFO] Process completed successfully!
+[2025-07-20 09:24:07] [INFO] Starting GitHub Shell Manager
+[2025-07-20 09:24:07] [INFO] Todo No: srv-tools#321, Stage: 3
+[2025-07-20 18:24:07] [INFO] 実行中: echo '🧪 Starting Stage 3: Testing and Pull Request for srv-tools#321'
+[2025-07-20 18:24:07] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:24:08] [INFO] 実行中: echo '🔍 Running tests for migration: migration20250720003'
+[2025-07-20 18:24:08] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:24:09] [INFO] 実行中: echo '📋 File validation test'
+[2025-07-20 18:24:09] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:24:10] [INFO] 実行中: test -f migrations/migration20250720003.go && echo 'File exists ✅' || echo 'File missing ❌'
+[2025-07-20 18:24:10] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:24:11] [INFO] 実行中: echo '📏 File size check'
+[2025-07-20 18:24:11] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:24:12] [INFO] 実行中: wc -l migrations/migration20250720003.go
+[2025-07-20 18:24:12] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:24:13] [INFO] 実行中: echo '🌿 Creating feature branch: feature/srv-tools-321-migration20250720003'
+[2025-07-20 18:24:13] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:24:14] [INFO] 実行中: git checkout -b feature/srv-tools-321-migration20250720003
+[2025-07-20 18:24:15] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:24:16] [INFO] 実行中: echo '💾 Committing changes'
+[2025-07-20 18:24:16] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:24:17] [INFO] 実行中: git commit -m 'feat: Add migration20250720003 for srv-tools#321
+
+- Created migration file: migration20250720003.go
+- Issue: srv-tools#321
+- Auto-generated by Universal GitHub Shell Manager v2.0'
+[2025-07-20 18:24:17] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:24:18] [INFO] 実行中: echo '📤 Pushing branch'
+[2025-07-20 18:24:18] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:24:19] [INFO] 実行中: git push -u origin feature/srv-tools-321-migration20250720003
+[2025-07-20 18:24:20] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:24:21] [INFO] 実行中: echo '🔄 Creating Pull Request'
+[2025-07-20 18:24:21] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:24:22] [INFO] 実行中: gh pr create --title 'feat: migration20250720003 for srv-tools#321' --body '## 概要
+srv-tools#321 の対応として migration20250720003 を追加しました。
+
+## 変更内容
+- マイグレーションファイル: \`migration20250720003.go\`
+- 自動生成日時: 2025-07-20 18:24:07
+- Universal GitHub Shell Manager: v2.0
+
+## 関連Issue
+Closes srv-tools#321' --base main --head feature/srv-tools-321-migration20250720003
+[2025-07-20 18:24:24] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:24:25] [INFO] 実行中: echo '📋 Test results: All tests passed ✅'
+[2025-07-20 18:24:25] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:24:26] [INFO] 実行中: echo '✅ Testing and PR creation completed for srv-tools#321'
+[2025-07-20 18:24:26] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:24:27] [INFO] 実行中: echo ''
+[2025-07-20 18:24:27] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:24:28] [INFO] 実行中: echo '⚠️  IMPORTANT: Stage 4 should only be executed AFTER the Pull Request has been reviewed and merged!'
+[2025-07-20 18:24:28] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:24:29] [INFO] 実行中: echo '👀 Please review and merge the Pull Request before running Stage 4'
+[2025-07-20 18:24:29] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:24:30] [INFO] 実行中: echo '🔗 Check PR status: gh pr list --head feature/srv-tools-321-migration20250720003'
+[2025-07-20 18:24:30] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:24:33] [INFO] ステージ 3 for srv-tools#321 が正常に完了しました
+[2025-07-20 18:24:33] [INFO] 実行レポートを生成しました: /mnt/c/Users/youre/Documents/git_repo/srv-tools/tmp/execution_report_20250720_182433.json
+[2025-07-20 18:24:33] [INFO] Process completed successfully!
+[2025-07-20 09:24:46] [INFO] Starting GitHub Shell Manager
+[2025-07-20 09:24:46] [INFO] Todo No: srv-tools#321, Stage: 4
+[2025-07-20 18:24:46] [INFO] 実行中: echo '🏁 Starting Stage 4: Finalization for srv-tools#321'
+[2025-07-20 18:24:46] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:24:47] [INFO] 実行中: echo '🔍 Checking if Pull Request has been merged...'
+[2025-07-20 18:24:47] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:24:48] [INFO] 実行中: PR_STATUS=$(gh pr list --head feature/srv-tools-321-migration20250720003 --state merged --json number --jq '.[0].number // empty')
+[2025-07-20 18:24:49] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:24:50] [INFO] 実行中: if [ -z "$PR_STATUS" ]; then echo '❌ ERROR: Pull Request has not been merged yet!'; echo '👀 Please merge the PR first: gh pr list --head feature/srv-tools-321-migration20250720003'; exit 1; fi
+[2025-07-20 18:24:50] [ERROR] エラー: コマンドが失敗しました: if [ -z "$PR_STATUS" ]; then echo '❌ ERROR: Pull Request has not been merged yet!'; echo '👀 Please merge the PR first: gh pr list --head feature/srv-tools-321-migration20250720003'; exit 1; fi
+出力: ❌ ERROR: Pull Request has not been merged yet!
+👀 Please merge the PR first: gh pr list --head feature/srv-tools-321-migration20250720003
+[2025-07-20 18:24:51] [INFO] GitHubレポートを作成しました: https://github.com/geeknow112/srv-tools/issues/324
+[2025-07-20 18:24:51] [INFO] 実行レポートを生成しました: /mnt/c/Users/youre/Documents/git_repo/srv-tools/tmp/execution_report_20250720_182450.json
+[2025-07-20 18:24:51] [ERROR] Fatal Error: コマンドが失敗しました: if [ -z "$PR_STATUS" ]; then echo '❌ ERROR: Pull Request has not been merged yet!'; echo '👀 Please merge the PR first: gh pr list --head feature/srv-tools-321-migration20250720003'; exit 1; fi
+出力: ❌ ERROR: Pull Request has not been merged yet!
+👀 Please merge the PR first: gh pr list --head feature/srv-tools-321-migration20250720003
+[2025-07-20 09:26:10] [INFO] Starting GitHub Shell Manager
+[2025-07-20 09:26:10] [INFO] Todo No: srv-tools#321, Stage: 4
+[2025-07-20 18:26:10] [INFO] 実行中: echo '🏁 Starting Stage 4: Finalization for srv-tools#321'
+[2025-07-20 18:26:10] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:26:11] [INFO] 実行中: echo '🔍 Checking if Pull Request has been merged...'
+[2025-07-20 18:26:11] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:26:12] [INFO] 実行中: PR_STATUS=$(gh pr list --head feature/srv-tools-321-migration20250720003 --state merged --json number --jq '.[0].number // empty')
+[2025-07-20 18:26:12] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:26:13] [INFO] 実行中: if [ -z "$PR_STATUS" ]; then echo '❌ ERROR: Pull Request has not been merged yet!'; echo '👀 Please merge the PR first: gh pr list --head feature/srv-tools-321-migration20250720003'; exit 1; fi
+[2025-07-20 18:26:13] [ERROR] エラー: コマンドが失敗しました: if [ -z "$PR_STATUS" ]; then echo '❌ ERROR: Pull Request has not been merged yet!'; echo '👀 Please merge the PR first: gh pr list --head feature/srv-tools-321-migration20250720003'; exit 1; fi
+出力: ❌ ERROR: Pull Request has not been merged yet!
+👀 Please merge the PR first: gh pr list --head feature/srv-tools-321-migration20250720003
+[2025-07-20 18:26:15] [INFO] GitHubレポートを作成しました: https://github.com/geeknow112/srv-tools/issues/325
+[2025-07-20 18:26:15] [INFO] 実行レポートを生成しました: /mnt/c/Users/youre/Documents/git_repo/srv-tools/tmp/execution_report_20250720_182613.json
+[2025-07-20 18:26:15] [ERROR] Fatal Error: コマンドが失敗しました: if [ -z "$PR_STATUS" ]; then echo '❌ ERROR: Pull Request has not been merged yet!'; echo '👀 Please merge the PR first: gh pr list --head feature/srv-tools-321-migration20250720003'; exit 1; fi
+出力: ❌ ERROR: Pull Request has not been merged yet!
+👀 Please merge the PR first: gh pr list --head feature/srv-tools-321-migration20250720003
+[2025-07-20 09:27:02] [INFO] Starting GitHub Shell Manager
+[2025-07-20 09:27:02] [INFO] Todo No: srv-tools#321, Stage: 4
+[2025-07-20 18:27:02] [INFO] 実行中: echo '🏁 Starting Stage 4: Finalization for srv-tools#321'
+[2025-07-20 18:27:02] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:27:03] [INFO] 実行中: echo '🔍 Checking if Pull Request has been merged...'
+[2025-07-20 18:27:03] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:27:06] [INFO] 実行中: PR_STATUS=$(gh pr list --head feature/srv-tools-321-migration20250720003 --state all | grep MERGED || echo '')
+[2025-07-20 18:27:06] [INFO] コマンドが正常に完了しました
+[2025-07-20 18:27:07] [INFO] 実行中: if [ -z "$PR_STATUS" ]; then echo '❌ ERROR: Pull Request has not been merged yet!'; echo '👀 Please merge the PR first: gh pr list --head feature/srv-tools-321-migration20250720003 --state all'; exit 1; fi
+[2025-07-20 18:27:07] [ERROR] エラー: コマンドが失敗しました: if [ -z "$PR_STATUS" ]; then echo '❌ ERROR: Pull Request has not been merged yet!'; echo '👀 Please merge the PR first: gh pr list --head feature/srv-tools-321-migration20250720003 --state all'; exit 1; fi
+出力: ❌ ERROR: Pull Request has not been merged yet!
+👀 Please merge the PR first: gh pr list --head feature/srv-tools-321-migration20250720003 --state all
+[2025-07-20 18:27:09] [INFO] GitHubレポートを作成しました: https://github.com/geeknow112/srv-tools/issues/326
+[2025-07-20 18:27:09] [INFO] 実行レポートを生成しました: /mnt/c/Users/youre/Documents/git_repo/srv-tools/tmp/execution_report_20250720_182707.json
+[2025-07-20 18:27:09] [ERROR] Fatal Error: コマンドが失敗しました: if [ -z "$PR_STATUS" ]; then echo '❌ ERROR: Pull Request has not been merged yet!'; echo '👀 Please merge the PR first: gh pr list --head feature/srv-tools-321-migration20250720003 --state all'; exit 1; fi
+出力: ❌ ERROR: Pull Request has not been merged yet!
+👀 Please merge the PR first: gh pr list --head feature/srv-tools-321-migration20250720003 --state all

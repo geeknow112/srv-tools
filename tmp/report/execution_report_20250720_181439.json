@@ -1,0 +1,79 @@
+{
+    "execution_info": {
+        "todo_no": "srv-tools#315",
+        "stage": 3,
+        "start_time": "2025-07-20 18:14:34",
+        "end_time": "2025-07-20 18:14:39",
+        "execution_time_seconds": 5.317,
+        "status": "SUCCESS",
+        "original_issue": "315"
+    },
+    "generated_files": {
+        "migration_name": "migration20250720001",
+        "migration_file": "migration20250720001.go",
+        "counter_value": 1
+    },
+    "execution_log": [
+        {
+            "timestamp": "2025-07-20 18:14:34",
+            "event": "実行開始",
+            "details": "ステージ 3 for srv-tools#315"
+        },
+        {
+            "timestamp": "2025-07-20 18:14:34",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo '📤 Stage 3: Git operations for srv-tools#315'",
+                "return_code": 0,
+                "execution_time": 0.001,
+                "output": "📤 Stage 3: Git operations for srv-tools#315"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:14:35",
+            "event": "コマンド実行",
+            "details": {
+                "command": "git status",
+                "return_code": 0,
+                "execution_time": 0.21,
+                "output": "On branch main\nYour branch is up to date with 'origin\/main'.\n\nChanges not staged for commit:\n  (use \"git add <file>...\" to update what will be committed)\n  (use \"git restore <file>...\" to discard changes in working directory)\n\tmodified:   ..\/migrations\/count.txt\n\tmodified:   githubsh.log\n\nUntracked files:\n  (use \"git add <file>...\" to include in what will be committed)\n\t..\/config\/\n\tmigrations\/\n\nno changes added to commit (use \"git add\" and\/or \"git commit -a\")"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:14:36",
+            "event": "コマンド実行",
+            "details": {
+                "command": "git add migrations\/migration20250720001.go",
+                "return_code": 0,
+                "execution_time": 0.042,
+                "output": ""
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:14:37",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo '✅ Files staged for commit'",
+                "return_code": 0,
+                "execution_time": 0.001,
+                "output": "✅ Files staged for commit"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:14:38",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo 'Note: In production, this would commit and push changes'",
+                "return_code": 0,
+                "execution_time": 0.001,
+                "output": "Note: In production, this would commit and push changes"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 18:14:39",
+            "event": "正常完了",
+            "details": "ステージ 3 の実行が完了しました"
+        }
+    ],
+    "error": null
+}

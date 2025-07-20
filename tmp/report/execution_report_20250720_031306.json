@@ -1,0 +1,59 @@
+{
+    "execution_info": {
+        "todo_no": "srv-tools#282",
+        "stage": 3,
+        "start_time": "2025-07-20 03:13:00",
+        "end_time": "2025-07-20 03:13:06",
+        "execution_time_seconds": 6.377,
+        "status": "SUCCESS",
+        "original_issue": "282"
+    },
+    "generated_files": {
+        "migration_name": "migration20250720010",
+        "migration_file": "migration20250720010.go",
+        "counter_value": 10
+    },
+    "execution_log": [
+        {
+            "timestamp": "2025-07-20 03:13:00",
+            "event": "実行開始",
+            "details": "ステージ 3 for srv-tools#282"
+        },
+        {
+            "timestamp": "2025-07-20 03:13:00",
+            "event": "コマンド実行",
+            "details": {
+                "command": "git add .",
+                "return_code": 0,
+                "execution_time": 0.062,
+                "output": ""
+            }
+        },
+        {
+            "timestamp": "2025-07-20 03:13:01",
+            "event": "コマンド実行",
+            "details": {
+                "command": "git commit -m 'Fixes geeknow112\/srv-tools#282'",
+                "return_code": 0,
+                "execution_time": 0.305,
+                "output": "[migration20250720010 b6503ba] Fixes geeknow112\/srv-tools#282\n 2 files changed, 140 insertions(+), 50 deletions(-)"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 03:13:04",
+            "event": "コマンド実行",
+            "details": {
+                "command": "git push origin migration20250720010",
+                "return_code": 0,
+                "execution_time": 1.75,
+                "output": "remote:\nremote: Create a pull request for 'migration20250720010' on GitHub by visiting:\nremote:      https:\/\/github.com\/geeknow112\/srv-tools\/pull\/new\/migration20250720010\nremote:\nTo https:\/\/github.com\/geeknow112\/srv-tools.git\n * [new branch]      migration20250720010 -> migration20250720010"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 03:13:06",
+            "event": "正常完了",
+            "details": "ステージ 3 の実行が完了しました"
+        }
+    ],
+    "error": null
+}

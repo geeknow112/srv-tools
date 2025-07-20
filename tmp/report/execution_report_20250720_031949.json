@@ -1,0 +1,59 @@
+{
+    "execution_info": {
+        "todo_no": "srv-tools#287",
+        "stage": 1,
+        "start_time": "2025-07-20 03:19:44",
+        "end_time": "2025-07-20 03:19:49",
+        "execution_time_seconds": 4.433,
+        "status": "SUCCESS",
+        "original_issue": "287"
+    },
+    "generated_files": {
+        "migration_name": "migration20250720011",
+        "migration_file": "migration20250720011.go",
+        "counter_value": 11
+    },
+    "execution_log": [
+        {
+            "timestamp": "2025-07-20 03:19:44",
+            "event": "実行開始",
+            "details": "ステージ 1 for srv-tools#287"
+        },
+        {
+            "timestamp": "2025-07-20 03:19:44",
+            "event": "コマンド実行",
+            "details": {
+                "command": "cd \/mnt\/c\/Users\/youre\/Documents\/git_repo\/srv-tools\/tmp\/..\/migrations\/",
+                "return_code": 0,
+                "execution_time": 0.002,
+                "output": ""
+            }
+        },
+        {
+            "timestamp": "2025-07-20 03:19:46",
+            "event": "コマンド実行",
+            "details": {
+                "command": "git checkout -b migration20250720011",
+                "return_code": 0,
+                "execution_time": 0.124,
+                "output": "Switched to a new branch 'migration20250720011'"
+            }
+        },
+        {
+            "timestamp": "2025-07-20 03:19:48",
+            "event": "コマンド実行",
+            "details": {
+                "command": "cp -p \/mnt\/c\/Users\/youre\/Documents\/git_repo\/srv-tools\/tmp\/..\/migrations\/migration-20250703-001.go \/mnt\/c\/Users\/youre\/Documents\/git_repo\/srv-tools\/tmp\/..\/migrations\/migration20250720011.go",
+                "return_code": 0,
+                "execution_time": 0.007,
+                "output": ""
+            }
+        },
+        {
+            "timestamp": "2025-07-20 03:19:49",
+            "event": "正常完了",
+            "details": "ステージ 1 の実行が完了しました"
+        }
+    ],
+    "error": null
+}
