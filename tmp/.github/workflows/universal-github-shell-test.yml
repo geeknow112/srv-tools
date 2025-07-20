@@ -1,0 +1,174 @@
+name: Universal GitHub Shell Manager Test
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'tmp/controllers/**'
+      - 'tmp/models/**'
+      - 'tmp/helpers/**'
+      - 'gdata.php'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'tmp/controllers/**'
+      - 'tmp/models/**'
+      - 'tmp/helpers/**'
+      - 'gdata.php'
+
+jobs:
+  test-stage-0-3:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.1'
+        
+    - name: Setup GitHub CLI
+      run: |
+        curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+        echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+        sudo apt update
+        sudo apt install gh
+        
+    - name: Configure Git
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        
+    - name: Setup GitHub CLI Authentication
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        echo "$GITHUB_TOKEN" | gh auth login --with-token
+        
+    - name: Test Stage 0 - Issue Creation
+      working-directory: tmp
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        php controllers/githubsh.php "GitHub Actions自動テスト - Stage 0-3" 0
+        
+    - name: Extract Issue Number
+      id: extract_issue
+      working-directory: tmp
+      run: |
+        ISSUE_URL=$(tail -n 20 githubsh.log | grep "GitHub issue created:" | tail -n 1 | awk '{print $NF}')
+        ISSUE_NUMBER=$(echo $ISSUE_URL | grep -o '[0-9]*$')
+        echo "issue_number=$ISSUE_NUMBER" >> $GITHUB_OUTPUT
+        echo "Issue Number: $ISSUE_NUMBER"
+        
+    - name: Test Stage 1 - Migration File Generation
+      working-directory: tmp
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        php controllers/githubsh.php "srv-tools#${{ steps.extract_issue.outputs.issue_number }}" 1
+        
+    - name: Test Stage 2 - Branch and Commit
+      working-directory: tmp
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        php controllers/githubsh.php "srv-tools#${{ steps.extract_issue.outputs.issue_number }}" 2
+        
+    - name: Test Stage 3 - Pull Request Creation
+      working-directory: tmp
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        php controllers/githubsh.php "srv-tools#${{ steps.extract_issue.outputs.issue_number }}" 3
+        
+    - name: Verify Pull Request Creation
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        BRANCH_NAME="feature/srv-tools-${{ steps.extract_issue.outputs.issue_number }}-migration$(date +%Y%m%d)$(printf "%03d" $(cat tmp/migrations/count.txt))"
+        echo "Checking for PR with branch: $BRANCH_NAME"
+        gh pr list --head "$BRANCH_NAME" --state open
+        
+    - name: Upload Test Reports
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: test-reports
+        path: |
+          tmp/models/report/
+          tmp/githubsh.log
+        retention-days: 30
+        
+    - name: Comment Test Results
+      if: always()
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        if [ "${{ job.status }}" == "success" ]; then
+          gh issue comment ${{ steps.extract_issue.outputs.issue_number }} --body "🎉 **GitHub Actions自動テスト完了**
+
+        ✅ **テスト結果: 成功**
+        - Stage 0: Issue作成 ✅
+        - Stage 1: マイグレーション生成 ✅  
+        - Stage 2: ブランチ・コミット ✅
+        - Stage 3: Pull Request作成 ✅
+
+        🤖 **実行環境**: GitHub Actions
+        📅 **実行日時**: $(date)
+        🔗 **ワークフロー**: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+        Universal GitHub Shell Manager v2.0 正常動作確認済み"
+        else
+          gh issue comment ${{ steps.extract_issue.outputs.issue_number }} --body "❌ **GitHub Actions自動テスト失敗**
+
+        テストが失敗しました。詳細は以下を確認してください：
+        🔗 **ワークフロー**: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+        修正が必要です。"
+        fi
+
+  cleanup-test-branches:
+    runs-on: ubuntu-latest
+    needs: test-stage-0-3
+    if: always()
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup GitHub CLI
+      run: |
+        curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+        echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+        sudo apt update
+        sudo apt install gh
+        
+    - name: Setup GitHub CLI Authentication
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        echo "$GITHUB_TOKEN" | gh auth login --with-token
+        
+    - name: Cleanup Test Branches and PRs
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        echo "Cleaning up test branches and PRs..."
+        
+        # Close test PRs
+        gh pr list --state open --json number,title,headRefName | jq -r '.[] | select(.title | contains("GitHub Actions自動テスト")) | .number' | while read pr_number; do
+          if [ ! -z "$pr_number" ]; then
+            echo "Closing test PR #$pr_number"
+            gh pr close $pr_number --comment "🧹 自動テスト完了のためクローズします"
+          fi
+        done
+        
+        # Delete test branches
+        git branch -r | grep "origin/feature/srv-tools-.*-migration" | grep -E "$(date +%Y%m%d)" | while read branch; do
+          branch_name=$(echo $branch | sed 's/origin\///')
+          echo "Deleting test branch: $branch_name"
+          git push origin --delete "$branch_name" || echo "Branch $branch_name already deleted"
+        done
