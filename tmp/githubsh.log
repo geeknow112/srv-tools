@@ -761,3 +761,8 @@ Closes srv-tools#321' --base main --head feature/srv-tools-321-migration20250720
 [2025-07-20 09:43:45] [INFO] Creating GitHub issue: README.mdをリポジトリルートに移動してGitHub表示対応
 [2025-07-20 09:43:46] [INFO] GitHub issue created: https://github.com/geeknow112/srv-tools/issues/328
 [2025-07-20 09:43:46] [INFO] Process completed successfully!
+[2025-07-20 19:46:28] [INFO] Starting GitHub Shell Manager
+[2025-07-20 19:46:28] [INFO] Todo No: フォルダ構造の整理：controllers, models, helpersフォルダ作成とファイル格納, Stage: 0
+[2025-07-20 19:46:28] [INFO] Creating GitHub issue: フォルダ構造の整理：controllers, models, helpersフォルダ作成とファイル格納
+[2025-07-20 19:46:29] [INFO] GitHub issue created: https://github.com/geeknow112/srv-tools/issues/330
+[2025-07-20 19:46:29] [INFO] Process completed successfully!
