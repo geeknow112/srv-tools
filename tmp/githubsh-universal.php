@@ -2,38 +2,32 @@
 <?php
 /**
  * Universal GitHub Shell Manager
- * マイグレーションファイル生成とGitHub作業フローの自動化ツール（汎用版）
+ * 汎用化されたGitHub作業フローの自動化ツール
  * 
- * Usage: 
- *   php githubsh-universal.php init                    # Initialize configuration
- *   php githubsh-universal.php <issue_title> 0         # Create GitHub issue
- *   php githubsh-universal.php <todo_no> <stage_number> # Execute workflow stages
- * 
- * Examples:
- *   php githubsh-universal.php init
- *   php githubsh-universal.php "Fix database migration bug" 0
- *   php githubsh-universal.php srv-tools#101 1
+ * Version: 2.0 (変数一貫性問題修正版)
+ * Author: Amazon Q
+ * License: MIT
  */
 
 class UniversalGitHubShellManager {
     private $config;
     private $project_root;
-    private $config_file;
+    private $session_file; // セッション情報保存用
     
     public function __construct() {
         $this->project_root = $this->findProjectRoot();
-        $this->config_file = $this->project_root . '/.githubsh.json';
-        $this->loadConfig();
+        $this->session_file = $this->project_root . '/.githubsh_session.json';
+        $this->loadConfiguration();
     }
     
     /**
-     * プロジェクトルートを検索（.gitディレクトリを基準）
+     * プロジェクトルートを検索
      */
     private function findProjectRoot() {
         $current_dir = getcwd();
         
         while ($current_dir !== '/') {
-            if (is_dir($current_dir . '/.git')) {
+            if (file_exists($current_dir . '/.git')) {
                 return $current_dir;
             }
             $current_dir = dirname($current_dir);
@@ -44,31 +38,41 @@ class UniversalGitHubShellManager {
     }
     
     /**
-     * 設定ファイルを読み込み
+     * 設定を読み込み
      */
-    private function loadConfig() {
-        if (!file_exists($this->config_file)) {
+    private function loadConfiguration() {
+        $config_file = $this->project_root . '/.githubsh.json';
+        
+        if (file_exists($config_file)) {
+            $this->config = json_decode(file_get_contents($config_file), true);
+        } else {
             $this->config = $this->getDefaultConfig();
-            return;
         }
         
-        $config_content = file_get_contents($this->config_file);
-        $this->config = json_decode($config_content, true);
-        
-        if (json_last_error() !== JSON_ERROR_NONE) {
-            throw new Exception("Invalid JSON in config file: " . json_last_error_msg());
+        // 相対パスを絶対パスに変換
+        foreach (['migration_path', 'log_file', 'count_file', 'gdata_file'] as $key) {
+            if (isset($this->config[$key]) && !$this->isAbsolutePath($this->config[$key])) {
+                $this->config[$key] = $this->project_root . '/' . ltrim($this->config[$key], './');
+            }
         }
-        
-        // デフォルト値とマージ
-        $this->config = array_merge($this->getDefaultConfig(), $this->config);
+    }
+    
+    /**
+     * 絶対パスかどうかを判定
+     */
+    private function isAbsolutePath($path) {
+        return $path[0] === '/' || (PHP_OS_FAMILY === 'Windows' && preg_match('/^[A-Za-z]:/', $path));
     }
     
     /**
      * デフォルト設定を取得
      */
     private function getDefaultConfig() {
+        $project_name = $this->detectProjectName();
+        $github_info = $this->detectGitHubInfo();
+        
         return [
-            'project_name' => basename($this->project_root),
+            'project_name' => $project_name,
             'migration_path' => './migrations',
             'log_file' => './githubsh.log',
             'count_file' => './migration_count.txt',
@@ -77,63 +81,104 @@ class UniversalGitHubShellManager {
                 'body' => "## 概要\n自動生成されたissueです。\n\n## 作業内容\n- [ ] 調査\n- [ ] 実装\n- [ ] テスト\n- [ ] レビュー\n\n## 備考\n作成日時: {{date}}"
             ],
             'stages' => [
-                1 => ['name' => 'Preparation', 'commands' => []],
-                2 => ['name' => 'Implementation', 'commands' => []],
-                3 => ['name' => 'Testing', 'commands' => []],
-                4 => ['name' => 'Finalization', 'commands' => []]
+                '1' => ['name' => 'Preparation', 'commands' => []],
+                '2' => ['name' => 'Implementation', 'commands' => []],
+                '3' => ['name' => 'Testing', 'commands' => []],
+                '4' => ['name' => 'Finalization', 'commands' => []]
             ],
             'github' => [
-                'owner' => '',
-                'repo' => '',
+                'owner' => $github_info['owner'] ?? 'your-username',
+                'repo' => $github_info['repo'] ?? 'your-repository',
                 'use_gh_cli' => true
             ]
         ];
     }
     
     /**
-     * 設定ファイルを保存
+     * プロジェクト名を検出
      */
-    private function saveConfig() {
-        $json = json_encode($this->config, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-        file_put_contents($this->config_file, $json);
+    private function detectProjectName() {
+        return basename($this->project_root);
     }
     
     /**
-     * 初期化コマンド
+     * GitHub情報を検出
+     */
+    private function detectGitHubInfo() {
+        $git_config = $this->project_root . '/.git/config';
+        
+        if (!file_exists($git_config)) {
+            return [];
+        }
+        
+        $config_content = file_get_contents($git_config);
+        
+        // GitHub URLを検索
+        if (preg_match('/url = https:\/\/github\.com\/([^\/]+)\/([^\/\s]+)/', $config_content, $matches)) {
+            return [
+                'owner' => $matches[1],
+                'repo' => rtrim($matches[2], '.git')
+            ];
+        }
+        
+        return [];
+    }
+    
+    /**
+     * セッション情報を保存
+     */
+    private function saveSession($data) {
+        file_put_contents($this->session_file, json_encode($data, JSON_PRETTY_PRINT));
+    }
+    
+    /**
+     * セッション情報を読み込み
+     */
+    private function loadSession() {
+        if (file_exists($this->session_file)) {
+            return json_decode(file_get_contents($this->session_file), true);
+        }
+        return null;
+    }
+    
+    /**
+     * セッション情報をクリア
+     */
+    private function clearSession() {
+        if (file_exists($this->session_file)) {
+            unlink($this->session_file);
+        }
+    }
+    
+    /**
+     * ログを書き込み
+     */
+    private function writeLog($message) {
+        $timestamp = date('Y-m-d H:i:s');
+        $log_entry = "[$timestamp] [INFO] $message" . PHP_EOL;
+        file_put_contents($this->config['log_file'], $log_entry, FILE_APPEND | LOCK_EX);
+    }
+    
+    /**
+     * 初期化処理
      */
     public function initialize() {
         echo "Initializing GitHub Shell Manager for project: " . $this->config['project_name'] . PHP_EOL;
         
-        // GitHubリポジトリ情報を取得
-        $this->detectGitHubInfo();
+        $github_info = $this->detectGitHubInfo();
+        if (!empty($github_info)) {
+            echo "Detected GitHub repository: {$github_info['owner']}/{$github_info['repo']}" . PHP_EOL;
+            $this->config['github']['owner'] = $github_info['owner'];
+            $this->config['github']['repo'] = $github_info['repo'];
+        }
         
-        // 設定ファイルを作成
-        $this->saveConfig();
-        
-        // 必要なディレクトリを作成
         $this->createDirectories();
-        
-        // テンプレートファイルを作成
         $this->createTemplateFiles();
+        $this->saveConfiguration();
         
         echo "Initialization completed!" . PHP_EOL;
-        echo "Configuration file created: " . $this->config_file . PHP_EOL;
+        echo "Configuration file created: " . $this->project_root . "/.githubsh.json" . PHP_EOL;
         echo "Please edit the configuration file to customize your workflow." . PHP_EOL;
-    }
-    
-    /**
-     * GitHub情報を自動検出
-     */
-    private function detectGitHubInfo() {
-        $remote_url = trim(shell_exec('git remote get-url origin 2>/dev/null') ?? '');
-        
-        if (preg_match('/github\.com[\/:]([^\/]+)\/([^\/\.]+)/', $remote_url, $matches)) {
-            $this->config['github']['owner'] = $matches[1];
-            $this->config['github']['repo'] = $matches[2];
-            echo "Detected GitHub repository: {$matches[1]}/{$matches[2]}" . PHP_EOL;
-        } else {
-            echo "Could not detect GitHub repository. Please configure manually." . PHP_EOL;
-        }
     }
     
     /**
@@ -141,12 +186,12 @@ class UniversalGitHubShellManager {
      */
     private function createDirectories() {
         $dirs = [
-            $this->config['migration_path'],
+            dirname($this->config['migration_path']),
             dirname($this->config['log_file'])
         ];
         
         foreach ($dirs as $dir) {
-            if ($dir && !is_dir($dir)) {
+            if (!empty($dir) && !is_dir($dir)) {
                 mkdir($dir, 0755, true);
                 echo "Created directory: $dir" . PHP_EOL;
             }
@@ -169,6 +214,14 @@ class UniversalGitHubShellManager {
             file_put_contents($this->config['count_file'], "0");
             echo "Created count file: " . $this->config['count_file'] . PHP_EOL;
         }
+    }
+    
+    /**
+     * 設定を保存
+     */
+    private function saveConfiguration() {
+        $config_file = $this->project_root . '/.githubsh.json';
+        file_put_contents($config_file, json_encode($this->config, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     }
     
     /**
@@ -230,7 +283,7 @@ function get_cmd_4($migrate, $mfile, $todo_no) {
 }
 
 // Project-specific variables
-$migrate = "migration" . date("Ymd") . sprintf("%03d", file_get_contents(__DIR__ . "/migration_count.txt") + 1);
+$migrate = "migration" . date("Ymd") . sprintf("%03d", intval(file_get_contents(__DIR__ . "/migration_count.txt")) + 1);
 $mfile = $migrate . ".go"; // or .php, .sql, etc. depending on your project
 ';
     }
@@ -238,14 +291,23 @@ $mfile = $migrate . ".go"; // or .php, .sql, etc. depending on your project
     /**
      * GitHub Issue作成
      */
-    public function createGitHubIssue($title) {
+    public function createIssue($title, $stage) {
+        if ($stage != 0) {
+            throw new Exception("Issue creation is only available for stage 0");
+        }
+        
+        $this->writeLog("Creating GitHub issue: $title");
+        
         $body = str_replace('{{date}}', date('Y-m-d H:i:s'), $this->config['issue_template']['body']);
         
         if ($this->config['github']['use_gh_cli']) {
-            return $this->createIssueWithGhCli($title, $body);
+            $issue_url = $this->createIssueWithGhCli($title, $body);
+            echo "GitHub issue created: $issue_url" . PHP_EOL;
         } else {
-            throw new Exception("GitHub API integration not implemented yet. Please use GitHub CLI.");
+            echo "GitHub CLI is disabled. Please create the issue manually." . PHP_EOL;
         }
+        
+        echo "Process completed successfully!" . PHP_EOL;
     }
     
     /**
@@ -268,10 +330,65 @@ $mfile = $migrate . ".go"; // or .php, .sql, etc. depending on your project
     }
     
     /**
+     * 現在のマイグレーション番号を取得
+     */
+    private function getCurrentMigrationCount() {
+        $today = date('Ymd');
+        $pattern = $this->config['migration_path'] . "/migration{$today}*.go";
+        $files = glob($pattern);
+        
+        if (empty($files)) {
+            return 0;
+        }
+        
+        $max_number = 0;
+        foreach ($files as $file) {
+            if (preg_match('/migration' . $today . '(\d+)\.go$/', basename($file), $matches)) {
+                $number = intval($matches[1]);
+                if ($number > $max_number) {
+                    $max_number = $number;
+                }
+            }
+        }
+        
+        return $max_number;
+    }
+    
+    /**
      * ワークフロー実行
      */
     public function executeWorkflow($todo_no, $stage) {
         $this->writeLog("Starting workflow execution for $todo_no, stage $stage");
+        
+        // セッション情報を確認
+        $session = $this->loadSession();
+        
+        if ($stage == 1) {
+            // Stage 1: 新しいセッションを開始
+            $current_count = $this->getCurrentMigrationCount();
+            $migrate = "migration" . date("Ymd") . sprintf("%03d", $current_count + 1);
+            $mfile = $migrate . ".go";
+            
+            $session_data = [
+                'todo_no' => $todo_no,
+                'migrate' => $migrate,
+                'mfile' => $mfile,
+                'started_at' => date('Y-m-d H:i:s'),
+                'current_stage' => 1
+            ];
+            
+            $this->saveSession($session_data);
+        } else {
+            // Stage 2-4: 既存セッションを使用
+            if (!$session || $session['todo_no'] !== $todo_no) {
+                throw new Exception("No active session found for $todo_no. Please start with stage 1.");
+            }
+            
+            $migrate = $session['migrate'];
+            $mfile = $session['mfile'];
+            $session['current_stage'] = $stage;
+            $this->saveSession($session);
+        }
         
         // gdata.phpを読み込み
         if (file_exists($this->config['gdata_file'])) {
@@ -280,110 +397,97 @@ $mfile = $migrate . ".go"; // or .php, .sql, etc. depending on your project
             throw new Exception("Configuration file not found: " . $this->config['gdata_file']);
         }
         
-        // ステージに応じたコマンドを実行
+        // ステージに対応する関数を呼び出し
         $function_name = "get_cmd_$stage";
         if (!function_exists($function_name)) {
-            throw new Exception("Stage $stage is not defined in configuration");
+            throw new Exception("Function $function_name not found in " . $this->config['gdata_file']);
         }
-        
-        // 変数を準備
-        $migrate = isset($migrate) ? $migrate : "migration" . date("Ymd") . "001";
-        $mfile = isset($mfile) ? $mfile : $migrate . ".go";
         
         $commands = $function_name($migrate, $mfile, $todo_no);
         
-        foreach ($commands as $cmd) {
-            if (empty(trim($cmd))) continue;
-            
-            $this->writeLog("Executing: $cmd");
-            echo "Executing: $cmd" . PHP_EOL;
+        // コマンドを実行
+        foreach ($commands as $command) {
+            echo "Executing: $command" . PHP_EOL;
+            $this->writeLog("Executing: $command");
             
             $output = [];
             $return_code = 0;
-            exec($cmd . ' 2>&1', $output, $return_code);
+            exec($command . ' 2>&1', $output, $return_code);
             
             $output_str = implode("\n", $output);
-            $this->writeLog("Output: $output_str");
-            
-            if ($return_code !== 0) {
-                $error_msg = "Command failed with return code $return_code: $cmd\nOutput: $output_str";
-                $this->writeLog($error_msg, 'ERROR');
-                throw new Exception($error_msg);
+            if (!empty($output_str)) {
+                echo $output_str . PHP_EOL;
+                $this->writeLog("Output: $output_str");
             }
             
-            echo $output_str . PHP_EOL;
+            if ($return_code !== 0) {
+                $error_msg = "Command failed with return code $return_code: $command";
+                if (!empty($output_str)) {
+                    $error_msg .= "\nOutput: $output_str";
+                }
+                echo "Error: $error_msg" . PHP_EOL;
+                $this->writeLog("Error: $error_msg");
+                exit($return_code);
+            }
         }
         
         $this->writeLog("Workflow stage $stage completed successfully");
-    }
-    
-    /**
-     * ログ出力
-     */
-    private function writeLog($message, $level = 'INFO') {
-        $timestamp = date('Y-m-d H:i:s');
-        $log_entry = "[$timestamp] [$level] $message" . PHP_EOL;
         
-        file_put_contents($this->config['log_file'], $log_entry, FILE_APPEND | LOCK_EX);
+        // Stage 4完了時にセッションをクリア
+        if ($stage == 4) {
+            $this->clearSession();
+        }
+        
+        echo "Process completed successfully!" . PHP_EOL;
     }
     
     /**
      * 使用方法を表示
      */
     public function showUsage() {
-        echo "Universal GitHub Shell Manager" . PHP_EOL;
-        echo "Usage:" . PHP_EOL;
-        echo "  php githubsh-universal.php init                    # Initialize configuration" . PHP_EOL;
-        echo "  php githubsh-universal.php <issue_title> 0         # Create GitHub issue" . PHP_EOL;
-        echo "  php githubsh-universal.php <todo_no> <stage_number> # Execute workflow stages" . PHP_EOL;
-        echo "" . PHP_EOL;
-        echo "Examples:" . PHP_EOL;
-        echo "  php githubsh-universal.php init" . PHP_EOL;
-        echo "  php githubsh-universal.php \"Fix database migration bug\" 0" . PHP_EOL;
-        echo "  php githubsh-universal.php srv-tools#101 1" . PHP_EOL;
+        echo "Universal GitHub Shell Manager\n";
+        echo "Usage:\n";
+        echo "  php " . basename(__FILE__) . " init                    # Initialize project\n";
+        echo "  php " . basename(__FILE__) . " \"title\" 0              # Create GitHub issue\n";
+        echo "  php " . basename(__FILE__) . " project#123 1           # Execute stage 1\n";
+        echo "  php " . basename(__FILE__) . " project#123 2           # Execute stage 2\n";
+        echo "  php " . basename(__FILE__) . " project#123 3           # Execute stage 3\n";
+        echo "  php " . basename(__FILE__) . " project#123 4           # Execute stage 4\n";
+        echo "\nStages:\n";
+        echo "  0: Create GitHub issue\n";
+        echo "  1: Preparation\n";
+        echo "  2: Implementation\n";
+        echo "  3: Testing\n";
+        echo "  4: Finalization\n";
     }
 }
 
 // メイン処理
+if ($argc < 2) {
+    $manager = new UniversalGitHubShellManager();
+    $manager->showUsage();
+    exit(1);
+}
+
 try {
-    if ($argc < 2) {
-        $manager = new UniversalGitHubShellManager();
-        $manager->showUsage();
-        exit(1);
-    }
-    
     $manager = new UniversalGitHubShellManager();
     
-    $command = $argv[1];
-    
-    if ($command === 'init') {
+    if ($argv[1] === 'init') {
         $manager->initialize();
     } elseif ($argc >= 3) {
-        $todo_no = $argv[1];
+        $title_or_todo = $argv[1];
         $stage = intval($argv[2]);
         
         if ($stage === 0) {
-            // Stage 0: GitHub Issue作成
-            $issue_title = $todo_no;
-            echo "Creating GitHub issue: $issue_title" . PHP_EOL;
-            
-            $issue_url = $manager->createGitHubIssue($issue_title);
-            echo "GitHub issue created: $issue_url" . PHP_EOL;
+            $manager->createIssue($title_or_todo, $stage);
         } else {
-            // Stage 1-4: ワークフロー実行
-            $manager->executeWorkflow($todo_no, $stage);
+            $manager->executeWorkflow($title_or_todo, $stage);
         }
-        
-        echo "Process completed successfully!" . PHP_EOL;
     } else {
         $manager->showUsage();
         exit(1);
     }
-    
 } catch (Exception $e) {
     echo "Error: " . $e->getMessage() . PHP_EOL;
-    exit(1);
-} catch (Error $e) {
-    echo "Fatal Error: " . $e->getMessage() . PHP_EOL;
     exit(1);
 }
