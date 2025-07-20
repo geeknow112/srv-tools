@@ -756,3 +756,8 @@ Closes srv-tools#321' --base main --head feature/srv-tools-321-migration20250720
 [2025-07-20 18:27:09] [ERROR] Fatal Error: コマンドが失敗しました: if [ -z "$PR_STATUS" ]; then echo '❌ ERROR: Pull Request has not been merged yet!'; echo '👀 Please merge the PR first: gh pr list --head feature/srv-tools-321-migration20250720003 --state all'; exit 1; fi
 出力: ❌ ERROR: Pull Request has not been merged yet!
 👀 Please merge the PR first: gh pr list --head feature/srv-tools-321-migration20250720003 --state all
+[2025-07-20 09:43:45] [INFO] Starting GitHub Shell Manager
+[2025-07-20 09:43:45] [INFO] Todo No: README.mdをリポジトリルートに移動してGitHub表示対応, Stage: 0
+[2025-07-20 09:43:45] [INFO] Creating GitHub issue: README.mdをリポジトリルートに移動してGitHub表示対応
+[2025-07-20 09:43:46] [INFO] GitHub issue created: https://github.com/geeknow112/srv-tools/issues/328
+[2025-07-20 09:43:46] [INFO] Process completed successfully!
