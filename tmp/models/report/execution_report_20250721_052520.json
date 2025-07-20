@@ -1,0 +1,89 @@
+{
+    "execution_info": {
+        "todo_no": "srv-tools#336",
+        "stage": 1,
+        "start_time": "2025-07-21 05:25:14",
+        "end_time": "2025-07-21 05:25:20",
+        "execution_time_seconds": 6.087,
+        "status": "SUCCESS",
+        "original_issue": "336"
+    },
+    "generated_files": {
+        "migration_name": "migration20250721001",
+        "migration_file": "migration20250721001.go",
+        "counter_value": 1
+    },
+    "execution_log": [
+        {
+            "timestamp": "2025-07-21 05:25:14",
+            "event": "実行開始",
+            "details": "ステージ 1 for srv-tools#336"
+        },
+        {
+            "timestamp": "2025-07-21 05:25:14",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo '🚀 Starting Stage 1: Preparation for srv-tools#336'",
+                "return_code": 0,
+                "execution_time": 0.001,
+                "output": "🚀 Starting Stage 1: Preparation for srv-tools#336"
+            }
+        },
+        {
+            "timestamp": "2025-07-21 05:25:15",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo '📁 Creating migration file: migration20250721001.go'",
+                "return_code": 0,
+                "execution_time": 0.001,
+                "output": "📁 Creating migration file: migration20250721001.go"
+            }
+        },
+        {
+            "timestamp": "2025-07-21 05:25:16",
+            "event": "コマンド実行",
+            "details": {
+                "command": "touch migrations\/migration20250721001.go",
+                "return_code": 0,
+                "execution_time": 0.004,
+                "output": ""
+            }
+        },
+        {
+            "timestamp": "2025-07-21 05:25:17",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo '📝 Adding template content'",
+                "return_code": 0,
+                "execution_time": 0.001,
+                "output": "📝 Adding template content"
+            }
+        },
+        {
+            "timestamp": "2025-07-21 05:25:18",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo 'package main\n\nimport \"fmt\"\n\n\/\/ Migration: migration20250721001\n\/\/ Created: 2025-07-21 05:25:14\n\/\/ Issue: srv-tools#336\n\nfunc main() {\n\tfmt.Println(\"Migration migration20250721001 executed successfully\")\n}' > migrations\/migration20250721001.go",
+                "return_code": 0,
+                "execution_time": 0.004,
+                "output": ""
+            }
+        },
+        {
+            "timestamp": "2025-07-21 05:25:19",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo '✅ Preparation completed for srv-tools#336'",
+                "return_code": 0,
+                "execution_time": 0.001,
+                "output": "✅ Preparation completed for srv-tools#336"
+            }
+        },
+        {
+            "timestamp": "2025-07-21 05:25:20",
+            "event": "正常完了",
+            "details": "ステージ 1 の実行が完了しました"
+        }
+    ],
+    "error": null
+}

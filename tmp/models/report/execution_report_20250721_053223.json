@@ -1,0 +1,219 @@
+{
+    "execution_info": {
+        "todo_no": "srv-tools#336",
+        "stage": 4,
+        "start_time": "2025-07-21 05:31:57",
+        "end_time": "2025-07-21 05:32:23",
+        "execution_time_seconds": 26.442,
+        "status": "SUCCESS",
+        "original_issue": "336"
+    },
+    "generated_files": {
+        "migration_name": "migration20250721001",
+        "migration_file": "migration20250721001.go",
+        "counter_value": 1
+    },
+    "execution_log": [
+        {
+            "timestamp": "2025-07-21 05:31:57",
+            "event": "実行開始",
+            "details": "ステージ 4 for srv-tools#336"
+        },
+        {
+            "timestamp": "2025-07-21 05:31:57",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo '🏁 Starting Stage 4: Finalization for srv-tools#336'",
+                "return_code": 0,
+                "execution_time": 0.001,
+                "output": "🏁 Starting Stage 4: Finalization for srv-tools#336"
+            }
+        },
+        {
+            "timestamp": "2025-07-21 05:31:58",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo '🔍 Checking if Pull Request has been merged...'",
+                "return_code": 0,
+                "execution_time": 0.001,
+                "output": "🔍 Checking if Pull Request has been merged..."
+            }
+        },
+        {
+            "timestamp": "2025-07-21 05:31:59",
+            "event": "コマンド実行",
+            "details": {
+                "command": "if ! gh pr list --head feature\/srv-tools-336-migration20250721001 --state all | grep -q MERGED; then echo '❌ ERROR: Pull Request has not been merged yet!'; echo '👀 Please merge the PR first: gh pr list --head feature\/srv-tools-336-migration20250721001 --state all'; exit 1; fi",
+                "return_code": 0,
+                "execution_time": 0.587,
+                "output": ""
+            }
+        },
+        {
+            "timestamp": "2025-07-21 05:32:00",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo '✅ Pull Request has been merged successfully'",
+                "return_code": 0,
+                "execution_time": 0.001,
+                "output": "✅ Pull Request has been merged successfully"
+            }
+        },
+        {
+            "timestamp": "2025-07-21 05:32:01",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo '🔄 Updating main branch'",
+                "return_code": 0,
+                "execution_time": 0.001,
+                "output": "🔄 Updating main branch"
+            }
+        },
+        {
+            "timestamp": "2025-07-21 05:32:03",
+            "event": "コマンド実行",
+            "details": {
+                "command": "git checkout main",
+                "return_code": 0,
+                "execution_time": 0.292,
+                "output": "Switched to branch 'main'\nM\ttmp\/migrations\/count.txt\nYour branch is up to date with 'origin\/main'."
+            }
+        },
+        {
+            "timestamp": "2025-07-21 05:32:05",
+            "event": "コマンド実行",
+            "details": {
+                "command": "git pull origin main",
+                "return_code": 0,
+                "execution_time": 1.229,
+                "output": "From https:\/\/github.com\/geeknow112\/srv-tools\n * branch            main       -> FETCH_HEAD\n   7d1287a..c38051c  main       -> origin\/main\nUpdating 7d1287a..c38051c\nFast-forward\n tmp\/migrations\/migration20250721001.go | 11 +++++++++++\n 1 file changed, 11 insertions(+)\n create mode 100644 tmp\/migrations\/migration20250721001.go"
+            }
+        },
+        {
+            "timestamp": "2025-07-21 05:32:06",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo '📋 Verifying merged migration file'",
+                "return_code": 0,
+                "execution_time": 0.001,
+                "output": "📋 Verifying merged migration file"
+            }
+        },
+        {
+            "timestamp": "2025-07-21 05:32:07",
+            "event": "コマンド実行",
+            "details": {
+                "command": "test -f migrations\/migration20250721001.go && echo '✅ Migration file exists in main branch' || (echo '❌ Migration file not found in main branch' && exit 1)",
+                "return_code": 0,
+                "execution_time": 0.002,
+                "output": "✅ Migration file exists in main branch"
+            }
+        },
+        {
+            "timestamp": "2025-07-21 05:32:08",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo '🧹 Cleaning up feature branch'",
+                "return_code": 0,
+                "execution_time": 0.001,
+                "output": "🧹 Cleaning up feature branch"
+            }
+        },
+        {
+            "timestamp": "2025-07-21 05:32:09",
+            "event": "コマンド実行",
+            "details": {
+                "command": "git branch -d feature\/srv-tools-336-migration20250721001 2>\/dev\/null || echo 'Local branch already deleted'",
+                "return_code": 0,
+                "execution_time": 0.09,
+                "output": "Deleted branch feature\/srv-tools-336-migration20250721001 (was a3bb698)."
+            }
+        },
+        {
+            "timestamp": "2025-07-21 05:32:11",
+            "event": "コマンド実行",
+            "details": {
+                "command": "git push origin --delete feature\/srv-tools-336-migration20250721001 2>\/dev\/null || echo 'Remote branch already deleted'",
+                "return_code": 0,
+                "execution_time": 1.33,
+                "output": ""
+            }
+        },
+        {
+            "timestamp": "2025-07-21 05:32:12",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo '📝 Updating migration count'",
+                "return_code": 0,
+                "execution_time": 0.001,
+                "output": "📝 Updating migration count"
+            }
+        },
+        {
+            "timestamp": "2025-07-21 05:32:13",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo '1' > migration_count.txt",
+                "return_code": 0,
+                "execution_time": 0.003,
+                "output": ""
+            }
+        },
+        {
+            "timestamp": "2025-07-21 05:32:16",
+            "event": "コマンド実行",
+            "details": {
+                "command": "gh issue comment 336 --body '🎉 **Workflow completed successfully!**\n\n✅ **All stages completed:**\n- ✅ Stage 1: Migration file created\n- ✅ Stage 2: Implementation completed\n- ✅ Stage 3: Pull Request created and reviewed\n- ✅ **Stage 4: Pull Request merged and finalized**\n\n📁 **Migration file**: \\`migrations\/migration20250721001.go\\`\n🌿 **Branch**: \\`feature\/srv-tools-336-migration20250721001\\` (cleaned up)\n📅 **Completed**: 2025-07-21 05:31:57\n🤖 **Universal GitHub Shell Manager**: v2.0\n\n**Workflow fully completed** 🚀'",
+                "return_code": 0,
+                "execution_time": 1.026,
+                "output": "https:\/\/github.com\/geeknow112\/srv-tools\/issues\/336#issuecomment-3094762563"
+            }
+        },
+        {
+            "timestamp": "2025-07-21 05:32:17",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo '🎉 Finalization completed for srv-tools#336 ✅'",
+                "return_code": 0,
+                "execution_time": 0.001,
+                "output": "🎉 Finalization completed for srv-tools#336 ✅"
+            }
+        },
+        {
+            "timestamp": "2025-07-21 05:32:20",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo '✨ All stages completed successfully!'",
+                "return_code": 0,
+                "execution_time": 0.002,
+                "output": "✨ All stages completed successfully!"
+            }
+        },
+        {
+            "timestamp": "2025-07-21 05:32:21",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo '🧹 Feature branch cleaned up'",
+                "return_code": 0,
+                "execution_time": 0.002,
+                "output": "🧹 Feature branch cleaned up"
+            }
+        },
+        {
+            "timestamp": "2025-07-21 05:32:22",
+            "event": "コマンド実行",
+            "details": {
+                "command": "echo '📊 Migration counter updated'",
+                "return_code": 0,
+                "execution_time": 0.001,
+                "output": "📊 Migration counter updated"
+            }
+        },
+        {
+            "timestamp": "2025-07-21 05:32:23",
+            "event": "正常完了",
+            "details": "ステージ 4 の実行が完了しました"
+        }
+    ],
+    "error": null
+}
