@@ -1,0 +1,47 @@
+{
+    "test_suite": "Universal GitHub Shell Manager",
+    "timestamp": "2025-07-20 07:17:22",
+    "summary": {
+        "total_tests": 6,
+        "passed": 6,
+        "failed": 0,
+        "success_rate": 100
+    },
+    "results": [
+        {
+            "status": "PASS",
+            "test": "testInstallation",
+            "message": "Installation completed successfully"
+        },
+        {
+            "status": "PASS",
+            "test": "testInitialization",
+            "message": "Initialization completed successfully"
+        },
+        {
+            "status": "PASS",
+            "test": "testConfigurationGeneration",
+            "message": "Configuration file generated correctly"
+        },
+        {
+            "status": "PASS",
+            "test": "testProjectDetection",
+            "message": "GitHub repository information detected correctly"
+        },
+        {
+            "status": "PASS",
+            "test": "testWorkflowExecution",
+            "message": "Workflow execution (Stage 1) completed successfully"
+        },
+        {
+            "status": "PASS",
+            "test": "testErrorHandling",
+            "message": "Error handling works correctly for invalid stage"
+        }
+    ],
+    "environment": {
+        "php_version": "8.3.6",
+        "os": "Linux DESKTOP-A30LG4A 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64",
+        "test_directory": "\/tmp\/githubsh_test_1752995842"
+    }
+}
